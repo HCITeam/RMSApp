@@ -1,15 +1,14 @@
 package dao.impl;
 
 import dao.UserDAO;
-import entity.UserEntity;
 import org.springframework.stereotype.Repository;
-
+import entity.User;
 /**
  * Created by mj on 16/11/5.
  */
 @Repository
-public class UserDAOImpl extends BaseDAOImpl<UserEntity> implements UserDAO {
-    public UserEntity getUser(String userName){
-       return  getByColumn("name","zch");
+public class UserDAOImpl extends BaseDAOImpl<User> implements UserDAO {
+    public User getUser(String userName){
+       return  getByColumn("name",userName);
     }
 }

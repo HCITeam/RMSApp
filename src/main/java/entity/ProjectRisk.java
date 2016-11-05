@@ -3,11 +3,11 @@ package entity;
 import javax.persistence.*;
 
 /**
- * Created by 小春 on 2016/11/6.
+ * Created by mj on 16/11/6.
  */
 @Entity
-@Table(name = "project_risk", schema = "rms", catalog = "")
-public class ProjectRiskEntity {
+@Table(name = "project_risk", schema = "rms")
+public class ProjectRisk {
     private int id;
     private Integer projectId;
     private String content;
@@ -16,94 +16,94 @@ public class ProjectRiskEntity {
     private Integer threshold;
     private Integer creater;
     private Integer tracker;
-
+    
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
-
+    
     @Basic
-    @Column(name = "project_id", nullable = true)
+    @Column(name = "project_id")
     public Integer getProjectId() {
         return projectId;
     }
-
+    
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
-
+    
     @Basic
-    @Column(name = "content", nullable = true, length = 255)
+    @Column(name = "content")
     public String getContent() {
         return content;
     }
-
+    
     public void setContent(String content) {
         this.content = content;
     }
-
+    
     @Basic
-    @Column(name = "possibility", nullable = true)
+    @Column(name = "possibility")
     public Integer getPossibility() {
         return possibility;
     }
-
+    
     public void setPossibility(Integer possibility) {
         this.possibility = possibility;
     }
-
+    
     @Basic
-    @Column(name = "influenceLevel", nullable = true)
+    @Column(name = "influenceLevel")
     public Integer getInfluenceLevel() {
         return influenceLevel;
     }
-
+    
     public void setInfluenceLevel(Integer influenceLevel) {
         this.influenceLevel = influenceLevel;
     }
-
+    
     @Basic
-    @Column(name = "threshold", nullable = true)
+    @Column(name = "threshold")
     public Integer getThreshold() {
         return threshold;
     }
-
+    
     public void setThreshold(Integer threshold) {
         this.threshold = threshold;
     }
-
+    
     @Basic
-    @Column(name = "creater", nullable = true)
+    @Column(name = "creater")
     public Integer getCreater() {
         return creater;
     }
-
+    
     public void setCreater(Integer creater) {
         this.creater = creater;
     }
-
+    
     @Basic
-    @Column(name = "tracker", nullable = true)
+    @Column(name = "tracker")
     public Integer getTracker() {
         return tracker;
     }
-
+    
     public void setTracker(Integer tracker) {
         this.tracker = tracker;
     }
-
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
-        ProjectRiskEntity that = (ProjectRiskEntity) o;
-
+        
+        ProjectRisk that = (ProjectRisk) o;
+        
         if (id != that.id) return false;
         if (projectId != null ? !projectId.equals(that.projectId) : that.projectId != null) return false;
         if (content != null ? !content.equals(that.content) : that.content != null) return false;
@@ -113,10 +113,10 @@ public class ProjectRiskEntity {
         if (threshold != null ? !threshold.equals(that.threshold) : that.threshold != null) return false;
         if (creater != null ? !creater.equals(that.creater) : that.creater != null) return false;
         if (tracker != null ? !tracker.equals(that.tracker) : that.tracker != null) return false;
-
+        
         return true;
     }
-
+    
     @Override
     public int hashCode() {
         int result = id;

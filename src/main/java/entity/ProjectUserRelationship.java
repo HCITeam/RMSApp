@@ -3,59 +3,59 @@ package entity;
 import javax.persistence.*;
 
 /**
- * Created by 小春 on 2016/11/6.
+ * Created by mj on 16/11/6.
  */
 @Entity
-@Table(name = "project_user_relationship", schema = "rms", catalog = "")
-public class ProjectUserRelationshipEntity {
+@Table(name = "project_user_relationship", schema = "rms" )
+public class ProjectUserRelationship {
     private int id;
     private Integer userId;
     private Integer projectId;
-
+    
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
-
+    
     @Basic
-    @Column(name = "user_id", nullable = true)
+    @Column(name = "user_id")
     public Integer getUserId() {
         return userId;
     }
-
+    
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
+    
     @Basic
-    @Column(name = "project_id", nullable = true)
+    @Column(name = "project_id")
     public Integer getProjectId() {
         return projectId;
     }
-
+    
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
-
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
-        ProjectUserRelationshipEntity that = (ProjectUserRelationshipEntity) o;
-
+        
+        ProjectUserRelationship that = (ProjectUserRelationship) o;
+        
         if (id != that.id) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (projectId != null ? !projectId.equals(that.projectId) : that.projectId != null) return false;
-
+        
         return true;
     }
-
+    
     @Override
     public int hashCode() {
         int result = id;

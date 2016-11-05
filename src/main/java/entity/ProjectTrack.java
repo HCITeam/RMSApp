@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by 小春 on 2016/11/6.
+ * Created by mj on 16/11/6.
  */
 @Entity
-@Table(name = "project_track", schema = "rms", catalog = "")
-public class ProjectTrackEntity {
+@Table(name = "project_track", schema = "rms")
+public class ProjectTrack {
     private int id;
     private Integer projectId;
     private String risk;
@@ -16,84 +16,84 @@ public class ProjectTrackEntity {
     private String cause;
     private Integer tracker;
     private Timestamp updateTime;
-
+    
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
-
+    
     @Basic
-    @Column(name = "project_id", nullable = true)
+    @Column(name = "project_id")
     public Integer getProjectId() {
         return projectId;
     }
-
+    
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
-
+    
     @Basic
-    @Column(name = "risk", nullable = true, length = 255)
+    @Column(name = "risk")
     public String getRisk() {
         return risk;
     }
-
+    
     public void setRisk(String risk) {
         this.risk = risk;
     }
-
+    
     @Basic
-    @Column(name = "state", nullable = true)
+    @Column(name = "state")
     public Integer getState() {
         return state;
     }
-
+    
     public void setState(Integer state) {
         this.state = state;
     }
-
+    
     @Basic
-    @Column(name = "cause", nullable = true, length = 255)
+    @Column(name = "cause")
     public String getCause() {
         return cause;
     }
-
+    
     public void setCause(String cause) {
         this.cause = cause;
     }
-
+    
     @Basic
-    @Column(name = "tracker", nullable = true)
+    @Column(name = "tracker")
     public Integer getTracker() {
         return tracker;
     }
-
+    
     public void setTracker(Integer tracker) {
         this.tracker = tracker;
     }
-
+    
     @Basic
-    @Column(name = "update_time", nullable = true)
+    @Column(name = "update_time")
     public Timestamp getUpdateTime() {
         return updateTime;
     }
-
+    
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
     }
-
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
-        ProjectTrackEntity that = (ProjectTrackEntity) o;
-
+        
+        ProjectTrack that = (ProjectTrack) o;
+        
         if (id != that.id) return false;
         if (projectId != null ? !projectId.equals(that.projectId) : that.projectId != null) return false;
         if (risk != null ? !risk.equals(that.risk) : that.risk != null) return false;
@@ -101,10 +101,10 @@ public class ProjectTrackEntity {
         if (cause != null ? !cause.equals(that.cause) : that.cause != null) return false;
         if (tracker != null ? !tracker.equals(that.tracker) : that.tracker != null) return false;
         if (updateTime != null ? !updateTime.equals(that.updateTime) : that.updateTime != null) return false;
-
+        
         return true;
     }
-
+    
     @Override
     public int hashCode() {
         int result = id;
