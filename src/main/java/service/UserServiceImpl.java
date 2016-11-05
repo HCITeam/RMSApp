@@ -13,7 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserServiceImpl implements  UserService {
     
+<<<<<<< HEAD
     @Autowired
+=======
+
+>>>>>>> b5c89f2871696ab9f59723044ac476315387f40c
     private UserDAO userDAO;
     
     @Override

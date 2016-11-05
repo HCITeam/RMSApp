@@ -16,8 +16,19 @@ import java.util.Map;
  * Created by mj on 16/11/5.
  */
 @Controller
+<<<<<<< HEAD
 @RequestMapping("/systemManager")
 public class SystemManagerController extends  BaseController{
+=======
+@RequestMapping("/")
+public class SystemManagerController {
+
+    private UserService userService;
+    
+    public SystemManagerController(){
+        this.userService=new UserServiceImpl();
+    }
+>>>>>>> b5c89f2871696ab9f59723044ac476315387f40c
     
     @Autowired
     private UserService userService;
