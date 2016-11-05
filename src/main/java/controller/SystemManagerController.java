@@ -17,7 +17,7 @@ import java.util.ArrayList;
 @Controller
 @RequestMapping("/")
 public class SystemManagerController {
-   
+
     private UserService userService;
     
     public SystemManagerController(){
