@@ -3,7 +3,7 @@ node {
         git 'https://github.com/HCITeam/RMSApp.git'
     }
     stage('QA') {
-        //sh 'sonar-scanner'
+        sh 'sonar-scanner'
     }
     stage('build') {
         def mvnHome = tool 'M3'
