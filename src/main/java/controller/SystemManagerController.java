@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class SystemManagerController {
 
     private UserService userService;
-    
+
     public SystemManagerController(){
         this.userService=new UserServiceImpl();
     }
