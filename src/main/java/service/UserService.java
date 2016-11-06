@@ -5,8 +5,10 @@ package service;
  */
 import entity.User;
 public interface UserService {
-    public boolean addUser(User userEntity);
-    public boolean deleteUser(int id);
-    public boolean updateUser();
-    public User findUser(String name);
+    public boolean addUser(User user);
+    public boolean deleteUser(User user);
+    public boolean updateUser(User user);
+    public User findUserByName(String name);
+    public User findUserByID(int id);
+    public User login(String name,String password);
 }

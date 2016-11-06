@@ -7,6 +7,6 @@ import entity.User;
  */
 
 public interface UserDAO extends BaseDAO<User>{
-    public User getUser(String userName);
-    //public UserEntity getUserByID(int id);
+    public User getUserByName(String userName);
+    public User getUserByID(int id);
 }

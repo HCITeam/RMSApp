@@ -20,25 +20,38 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public boolean addUser(User user) {
-       
         userDAO.add(user);
         return true;
     }
     
     @Override
-    public boolean deleteUser(int id) {
-        return false;
+    public boolean deleteUser(User user) {
+        userDAO.delete(user);
+        return true;
     }
     
     @Override
-    public boolean updateUser() {
-        return false;
+    public boolean updateUser(User user) {
+        userDAO.update(user);
+        return true;
     }
     
     @Override
-    public User findUser(String name){
-        return  userDAO.getUser(name);
+    public User findUserByName(String name){
+        return  userDAO.getUserByName(name);
     }
     
+    @Override
+    public User findUserByID(int id){
+        return  userDAO.getUserByID(id);
+    }
     
+    @Override
+    public User login(String name,String password){
+        User user=userDAO.getUserByName(name);
+        if(user.getPassword().equals(password)){
+            return user;
+        }
+        return  null;
+    }
 }
