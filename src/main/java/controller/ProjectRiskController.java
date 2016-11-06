@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by Tamsen on 16/11/6.
  */
 @Controller
-@RequestMapping("/project")
+@RequestMapping("/projectRisk")
 public class ProjectRiskController extends BaseController{
     @Autowired
     private ProjectRiskService projectRiskService;
