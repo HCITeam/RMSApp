@@ -1,30 +1,27 @@
-package service;
+package service.impl;
 
 import dao.UserDAO;
-import dao.impl.UserDAOImpl;
-import entity.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import entity.User;
+import service.UserService;
 
 /**
  * Created by mj on 16/11/5.
  */
 @Service
 @Transactional
-public class UserServiceImpl implements  UserService {
+public class UserServiceImpl implements UserService {
     
 
+    @Autowired
     private UserDAO userDAO;
     
-    public UserServiceImpl(){
-        userDAO=new UserDAOImpl();
-    }
     @Override
-    public boolean addUser() {
-        UserEntity userEntity=new UserEntity();
-        userEntity.setName("lmj");
-        userEntity.setName("123");
-        userDAO.add(userEntity);
+    public boolean addUser(User user) {
+       
+        userDAO.add(user);
         return true;
     }
     
@@ -39,7 +36,7 @@ public class UserServiceImpl implements  UserService {
     }
     
     @Override
-    public UserEntity findUser(String name){
+    public User findUser(String name){
         return  userDAO.getUser(name);
     }
     
