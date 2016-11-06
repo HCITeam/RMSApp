@@ -12,5 +12,5 @@ public interface ProjectService {
     public boolean deleteProject(Project project);
     public boolean updateProject(Project project);
     public Project findProjectByID(int id);
-    public List<Project> findProjectByCreater(String creater);
+    public List<Project> findProjectByCreater(int creater);
 }

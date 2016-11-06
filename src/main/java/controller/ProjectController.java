@@ -60,10 +60,19 @@ public class ProjectController extends BaseController{
     }
     @ResponseBody
     @RequestMapping("/findProjectByCreater")
-    public List<Project> findProject(HttpServletRequest request, HttpServletResponse response){
+    public List<Project> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        String creater=params.get("creater");
+        int creater=Integer.parseInt(params.get("creater"));
         List<Project> projectList=projectService.findProjectByCreater(creater);
         return  projectList;
+    }
+    
+    @ResponseBody
+    @RequestMapping("/findProjectByID")
+    public Project findProjectByID(HttpServletRequest request, HttpServletResponse response){
+        Map<String, String> params=getParams(request);
+        int id=Integer.parseInt(params.get("id"));
+        Project project=projectService.findProjectByID(id);
+        return  project;
     }
 }

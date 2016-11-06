@@ -3,6 +3,8 @@ package service.impl;
 import dao.ProjectDAO;
 import entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import service.ProjectService;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 /**
  * Created by Tamsen on 16/11/6.
  */
+@Service
+@Transactional
 public class ProjectServiceImpl implements ProjectService {
     
     @Autowired
@@ -36,12 +40,12 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project findProjectByID(int id) {
         
-        return projectDAO.getByColumn("id",id);
+        return projectDAO.findProjectByID(id);
     }
     
     @Override
-    public List<Project> findProjectByCreater(String creater) {
+    public List<Project> findProjectByCreater(int creater) {
         
-        return projectDAO.getListByColumn("creater",creater);
+        return projectDAO.findProjectByCreater(creater);
     }
 }
