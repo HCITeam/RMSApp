@@ -33,14 +33,14 @@ public class ProjectUserRelationshipServiceImpl implements ProjectUserRelationsh
     
     @Override
     public List<ProjectUserRelationship> findProjectUserRelationshipByProject(int projectID) {
-        List<ProjectUserRelationship> list=projectUserRelationshipDAO.findProjectUserRelationshipByProject(projectID);
-        return list;
+        return projectUserRelationshipDAO.findProjectUserRelationshipByProject(projectID);
+        
     }
     
     @Override
     public List<ProjectUserRelationship> findProjectUserRelationshipByUser(int userID) {
-        List<ProjectUserRelationship> list=projectUserRelationshipDAO.findProjectUserRelationshipByUser(userID);
-        return list;
+         return projectUserRelationshipDAO.findProjectUserRelationshipByUser(userID);
+        
     }
     
     @Override

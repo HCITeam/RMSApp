@@ -26,13 +26,13 @@ public class ProjectRiskController extends BaseController{
     @ResponseBody
     public String addProjectRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int project_id=Integer.parseInt(params.get("project_id"));
-        String content=params.get("content");
-        int possibility=Integer.parseInt(params.get("possibility"));
-        int influenceLevel=Integer.parseInt(params.get("influenceLevel"));
-        int threshold=Integer.parseInt(params.get("threshold"));
-        int creater=Integer.parseInt(params.get("creater"));
-        int tracker=Integer.parseInt(params.get("tracker"));
+         project_id=Integer.parseInt(params.get("projectId"));
+         content=params.get("content");
+         possibility=Integer.parseInt(params.get("possibility"));
+         influenceLevel=Integer.parseInt(params.get("influenceLevel"));
+         threshold=Integer.parseInt(params.get("threshold"));
+         creater=Integer.parseInt(params.get("creater"));
+         tracker=Integer.parseInt(params.get("tracker"));
         ProjectRisk projectRisk=new ProjectRisk();
         projectRisk.setProjectId(project_id);
         projectRisk.setContent(content);
@@ -48,7 +48,7 @@ public class ProjectRiskController extends BaseController{
     @RequestMapping("/deleteProjectRisk")
     public ProjectRisk deleteProjectRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
+         id=Integer.parseInt(params.get("id"));
         ProjectRisk projectRisk=projectRiskService.findProjectRiskByID(id);
         projectRiskService.deleteProjectRisk(projectRisk);
         return  projectRisk;
@@ -57,14 +57,14 @@ public class ProjectRiskController extends BaseController{
     @RequestMapping("/updateProjectRisk")
     public ProjectRisk updateProjectRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
-        int project_id=Integer.parseInt(params.get("project_id"));
-        String content=params.get("content");
-        int possibility=Integer.parseInt(params.get("possibility"));
-        int influenceLevel=Integer.parseInt(params.get("influenceLevel"));
-        int threshold=Integer.parseInt(params.get("threshold"));
-        int creater=Integer.parseInt(params.get("creater"));
-        int tracker=Integer.parseInt(params.get("tracker"));
+         id=Integer.parseInt(params.get("id"));
+         project_id=Integer.parseInt(params.get("projectId"));
+         content=params.get("content");
+         possibility=Integer.parseInt(params.get("possibility"));
+         influenceLevel=Integer.parseInt(params.get("influenceLevel"));
+         threshold=Integer.parseInt(params.get("threshold"));
+         creater=Integer.parseInt(params.get("creater"));
+         tracker=Integer.parseInt(params.get("tracker"));
         ProjectRisk projectRisk=projectRiskService.findProjectRiskByID(id);
         projectRisk.setProjectId(project_id);
         projectRisk.setContent(content);
@@ -80,17 +80,25 @@ public class ProjectRiskController extends BaseController{
     @RequestMapping("/findProjectRiskByProject")
     public List<ProjectRisk> findProjectRiskByProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int project=Integer.parseInt(params.get("project_id"));
-        List<ProjectRisk> projectRiskList=projectRiskService.findProjectRiskByProject(project);
-        return  projectRiskList;
+         project_id=Integer.parseInt(params.get("projectId"));
+        return projectRiskService.findProjectRiskByProject(project_id);
+       
     }
     
     @ResponseBody
     @RequestMapping("/findProjectRiskByID")
     public ProjectRisk findProjectRiskByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
-        ProjectRisk projectRisk=projectRiskService.findProjectRiskByID(id);
-        return  projectRisk;
+         id=Integer.parseInt(params.get("id"));
+        return projectRiskService.findProjectRiskByID(id);
+      
     }
+    int id;
+    int project_id;
+    String content;
+    int possibility;
+    int influenceLevel;
+    int threshold;
+    int creater;
+    int tracker;
 }

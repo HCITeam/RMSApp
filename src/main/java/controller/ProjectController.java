@@ -26,9 +26,9 @@ public class ProjectController extends BaseController{
     @ResponseBody
     public String addProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        String name=params.get("name");
-        String description=params.get("description");
-        int creater=Integer.parseInt(params.get("creater"));
+         name=params.get("name");
+         description=params.get("description");
+         creater=Integer.parseInt(params.get("creater"));
         Project project=new Project();
         project.setName(name);
         project.setDescription(description);
@@ -40,7 +40,7 @@ public class ProjectController extends BaseController{
     @RequestMapping("/deleteProject")
     public Project deleteProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
+         id=Integer.parseInt(params.get("id"));
         Project project=projectService.findProjectByID(id);
         projectService.deleteProject(project);
         return  project;
@@ -49,9 +49,9 @@ public class ProjectController extends BaseController{
     @RequestMapping("/updateProject")
     public Project updateProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
-        String name=params.get("name");
-        String description=params.get("description");
+         id=Integer.parseInt(params.get("id"));
+         name=params.get("name");
+         description=params.get("description");
         Project project=projectService.findProjectByID(id);
         project.setName(name);
         project.setDescription(description);
@@ -62,17 +62,21 @@ public class ProjectController extends BaseController{
     @RequestMapping("/findProjectByCreater")
     public List<Project> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int creater=Integer.parseInt(params.get("creater"));
-        List<Project> projectList=projectService.findProjectByCreater(creater);
-        return  projectList;
+         creater=Integer.parseInt(params.get("creater"));
+        return projectService.findProjectByCreater(creater);
+       
     }
     
     @ResponseBody
     @RequestMapping("/findProjectByID")
     public Project findProjectByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
-        Project project=projectService.findProjectByID(id);
-        return  project;
+         id=Integer.parseInt(params.get("id"));
+        return projectService.findProjectByID(id);
+        
     }
+    int id;
+    String name;
+    String description;
+    int creater;
 }

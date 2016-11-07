@@ -26,11 +26,11 @@ public class ProjectUserRelationshipController extends  BaseController{
     @ResponseBody
     public String addProjectUserRelationship(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int user=Integer.parseInt(params.get("user_id"));
-        int project=Integer.parseInt(params.get("project_id"));
+         userId=Integer.parseInt(params.get("userId"));
+         projectId=Integer.parseInt(params.get("projectId"));
         ProjectUserRelationship projectUserRelationship=new ProjectUserRelationship();
-        projectUserRelationship.setUserId(user);
-        projectUserRelationship.setProjectId(project);
+        projectUserRelationship.setUserId(userId);
+        projectUserRelationship.setProjectId(projectId);
         projectUserRelationshipService.addProjectUserRelationship(projectUserRelationship);
         return "success" ;
     }
@@ -38,7 +38,7 @@ public class ProjectUserRelationshipController extends  BaseController{
     @RequestMapping("/deleteProjectUserRelationship")
     public ProjectUserRelationship deleteProjectUserRelationship(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
+         id=Integer.parseInt(params.get("id"));
         ProjectUserRelationship projectUserRelationship=projectUserRelationshipService.findProjectUserRelationshipByID(id);
         projectUserRelationshipService.deleteProjectUserRelationship(projectUserRelationship);
         return  projectUserRelationship;
@@ -48,17 +48,20 @@ public class ProjectUserRelationshipController extends  BaseController{
     @RequestMapping("/findProjectUserRelationshipByUser")
     public List<ProjectUserRelationship> findProjectUserRelationshipByUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int user=Integer.parseInt(params.get("user_id"));
-        List<ProjectUserRelationship> list=projectUserRelationshipService.findProjectUserRelationshipByUser(user);
-        return  list;
+         userId=Integer.parseInt(params.get("userId"));
+        return projectUserRelationshipService.findProjectUserRelationshipByUser(userId);
+        
     }
     
     @ResponseBody
     @RequestMapping("/findProjectUserRelationshipByProject")
     public List<ProjectUserRelationship> findProjectUserRelationshipByProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int project=Integer.parseInt(params.get("project_id"));
-        List<ProjectUserRelationship> list=projectUserRelationshipService.findProjectUserRelationshipByProject(project);
-        return  list;
+         projectId=Integer.parseInt(params.get("projectId"));
+        return projectUserRelationshipService.findProjectUserRelationshipByProject(projectId);
+        
     }
+    int id;
+    int userId;
+    int projectId;
 }

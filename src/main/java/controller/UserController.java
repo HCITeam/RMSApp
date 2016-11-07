@@ -26,8 +26,8 @@ public class UserController extends  BaseController{
     @ResponseBody
     public User addUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        String name=params.get("name");
-        String password=params.get("password");
+         name=params.get("name");
+         password=params.get("password");
         User user=new User();
         user.setName(name);
         user.setPassword(password);
@@ -39,7 +39,7 @@ public class UserController extends  BaseController{
     @RequestMapping("/deleteUser")
     public User deleteUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
+         id=Integer.parseInt(params.get("id"));
         User user=userService.findUserByID(id);
         userService.deleteUser(user);
         return  user;
@@ -48,9 +48,9 @@ public class UserController extends  BaseController{
     @RequestMapping("/updateUser")
     public User updateUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
-        String name=params.get("name");
-        String password=params.get("password");
+         id=Integer.parseInt(params.get("id"));
+         name=params.get("name");
+         password=params.get("password");
         User user=userService.findUserByID(id);
         user.setName(name);
         user.setPassword(password);
@@ -61,9 +61,11 @@ public class UserController extends  BaseController{
     @RequestMapping("/findUserByName")
     public User findUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        String name=params.get("name");
+         name=params.get("name");
         User user=userService.findUserByName(name);
         return  user;
     }
-     
+     int id;
+    String name;
+    String password;
 }

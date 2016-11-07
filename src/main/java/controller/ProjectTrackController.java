@@ -11,7 +11,6 @@ import service.ProjectTrackService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -29,19 +28,19 @@ public class ProjectTrackController extends  BaseController {
     @ResponseBody
     public String addProjectTrack(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int project_id=Integer.parseInt(params.get("project_id"));
-        String risk=params.get("risk");
-        int state=Integer.parseInt(params.get("state"));
-        String cause=params.get("cause");
-        int tracker=Integer.parseInt(params.get("tracker"));
-        String update_time=params.get("update_time");
+         project_id=Integer.parseInt(params.get("projectId"));
+         risk=params.get("risk");
+         state=Integer.parseInt(params.get("state"));
+         cause=params.get("cause");
+         tracker=Integer.parseInt(params.get("tracker"));
+         update_time=params.get("updateTime");
         ProjectTrack projectTrack=new ProjectTrack();
         projectTrack.setProjectId(project_id);
         projectTrack.setRisk(risk);
         projectTrack.setState(state);
         projectTrack.setCause(cause);
         projectTrack.setTracker(tracker);
-        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+       
         projectTrack.setUpdateTime(Timestamp.valueOf(update_time));
         projectTrackService.addProjectTrack(projectTrack);
         return "success" ;
@@ -59,20 +58,20 @@ public class ProjectTrackController extends  BaseController {
     @RequestMapping("/updateProjectTrack")
     public ProjectTrack updateProjectTrack(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
-        int project_id=Integer.parseInt(params.get("project_id"));
-        String risk=params.get("risk");
-        int state=Integer.parseInt(params.get("state"));
-        String cause=params.get("cause");
-        int tracker=Integer.parseInt(params.get("tracker"));
-        String update_time=params.get("update_time");
+         id=Integer.parseInt(params.get("id"));
+         project_id=Integer.parseInt(params.get("projectId"));
+         risk=params.get("risk");
+         state=Integer.parseInt(params.get("state"));
+         cause=params.get("cause");
+         tracker=Integer.parseInt(params.get("tracker"));
+        String update_time=params.get("updateTime");
         ProjectTrack projectTrack=projectTrackService.findProjectTrackByID(id);
         projectTrack.setProjectId(project_id);
         projectTrack.setRisk(risk);
         projectTrack.setState(state);
         projectTrack.setCause(cause);
         projectTrack.setTracker(tracker);
-        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      
         
         projectTrack.setUpdateTime(Timestamp.valueOf(update_time));
         
@@ -83,25 +82,32 @@ public class ProjectTrackController extends  BaseController {
     @RequestMapping("/findProjectTrackByProject")
     public List<ProjectTrack> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int project=Integer.parseInt(params.get("project_id"));
-        List<ProjectTrack> projectTrackList=projectTrackService.findProjectTrackByProject(project);
-        return  projectTrackList;
+         project_id=Integer.parseInt(params.get("projectId"));
+        return projectTrackService.findProjectTrackByProject(project_id);
+       
     }
     @ResponseBody
     @RequestMapping("/findProjectTrackByTracker")
     public List<ProjectTrack> findProjectTrackByTracker(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int tracker=Integer.parseInt(params.get("tracker"));
-        List<ProjectTrack> projectTrackList=projectTrackService.findProjectTrackByTracker(tracker);
-        return  projectTrackList;
+         tracker=Integer.parseInt(params.get("tracker"));
+        return projectTrackService.findProjectTrackByTracker(tracker);
+       
     }
     
     @ResponseBody
     @RequestMapping("/findProjectTrackByID")
     public ProjectTrack findProjectTrackByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        int id=Integer.parseInt(params.get("id"));
-        ProjectTrack projectTrack=projectTrackService.findProjectTrackByID(id);
-        return  projectTrack;
+         id=Integer.parseInt(params.get("id"));
+        return projectTrackService.findProjectTrackByID(id);
+       
     }
+    int id;
+    int project_id;
+    String risk;
+    int state;
+    String cause;
+    int tracker;
+    String update_time;
 }
