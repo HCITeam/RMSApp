@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Project {
     private int id;
     private String name;
-    private String describe;
+    private String description;
     private int creater;
     
     @Id
@@ -34,13 +34,13 @@ public class Project {
     }
     
     @Basic
-    @Column(name = "describe")
-    public String getDescribe() {
-        return describe;
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
     }
     
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     @Basic
@@ -63,7 +63,7 @@ public class Project {
         if (id != project.id) return false;
         if (creater != project.creater) return false;
         if (name != null ? !name.equals(project.name) : project.name != null) return false;
-        if (describe != null ? !describe.equals(project.describe) : project.describe != null) return false;
+        if (description != null ? !description.equals(project.description) : project.description != null) return false;
         
         return true;
     }
@@ -72,7 +72,7 @@ public class Project {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (describe != null ? describe.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + creater;
         return result;
     }

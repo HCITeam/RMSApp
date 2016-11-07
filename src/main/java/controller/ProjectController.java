@@ -27,11 +27,11 @@ public class ProjectController extends BaseController{
     public String addProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
         String name=params.get("name");
-        String describe=params.get("describe");
+        String description=params.get("description");
         int creater=Integer.parseInt(params.get("creater"));
         Project project=new Project();
         project.setName(name);
-        project.setDescribe(describe);
+        project.setDescription(description);
         project.setCreater(creater);
         projectService.addProject(project);
         return "success" ;
@@ -51,10 +51,10 @@ public class ProjectController extends BaseController{
         Map<String, String> params=getParams(request);
         int id=Integer.parseInt(params.get("id"));
         String name=params.get("name");
-        String describe=params.get("describe");
+        String description=params.get("description");
         Project project=projectService.findProjectByID(id);
         project.setName(name);
-        project.setDescribe(describe);
+        project.setDescription(description);
         projectService.updateProject(project);
         return  project;
     }
