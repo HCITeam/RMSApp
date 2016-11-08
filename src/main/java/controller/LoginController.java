@@ -28,6 +28,7 @@ public class LoginController extends  BaseController{
         String name=params.get("name");
         String password=params.get("password");
         User user=userService.login(name,password);
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Referer"));
         return  user;
     }
 }
