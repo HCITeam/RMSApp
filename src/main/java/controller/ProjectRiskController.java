@@ -42,6 +42,7 @@ public class ProjectRiskController extends BaseController{
         projectRisk.setCreater(creater);
         projectRisk.setTracker(tracker);
         projectRiskService.addProjectRisk(projectRisk);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return "success" ;
     }
     @ResponseBody

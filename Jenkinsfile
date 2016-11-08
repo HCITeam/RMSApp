@@ -12,8 +12,8 @@ node {
     stage('deploy') {
         sh "docker stop my || true"
         sh "docker rm my || true"
-        sh "docker run --name my -p 11111:8080 -d tomcat"
-        sh "docker cp /software/jenkins.war my:/usr/local/tomcat/webapps"
+        sh "docker run --name my -p 11111:8080 -d mytomcat:1.0 /root/run.sh"
+        sh "docker cp target/RMSApp.war my:/opt/tomcat/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
