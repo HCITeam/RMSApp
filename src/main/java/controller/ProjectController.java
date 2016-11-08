@@ -10,6 +10,8 @@ import service.ProjectService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
@@ -24,7 +26,7 @@ public class ProjectController extends BaseController{
     
     @RequestMapping(value="/addProject",method = RequestMethod.POST)
     @ResponseBody
-    public String addProject(HttpServletRequest request, HttpServletResponse response){
+    public List<Map<String,String>> addProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          name=params.get("name");
          description=params.get("description");
@@ -35,7 +37,11 @@ public class ProjectController extends BaseController{
         project.setCreater(creater);
         projectService.addProject(project);
         response.setHeader("Access-Control-Allow-Origin", "*");
-        return "success" ;
+        List<Map<String,String>>mapList=new ArrayList<Map<String,String>>();
+        Map<String,String>map=new HashMap<String,String>();
+        map.put("message","success");
+        mapList.add(map);
+        return mapList;
     }
     @ResponseBody
     @RequestMapping("/deleteProject")

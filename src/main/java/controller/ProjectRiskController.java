@@ -10,6 +10,8 @@ import service.ProjectRiskService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +26,7 @@ public class ProjectRiskController extends BaseController{
     
     @RequestMapping(value="/addProjectRisk",method = RequestMethod.POST)
     @ResponseBody
-    public String addProjectRisk(HttpServletRequest request, HttpServletResponse response){
+    public List<Map<String,String>> addProjectRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          project_id=Integer.parseInt(params.get("projectId"));
          content=params.get("content");
@@ -43,7 +45,11 @@ public class ProjectRiskController extends BaseController{
         projectRisk.setTracker(tracker);
         projectRiskService.addProjectRisk(projectRisk);
         response.setHeader("Access-Control-Allow-Origin", "*");
-        return "success" ;
+        List<Map<String,String>>mapList=new ArrayList<Map<String,String>>();
+        Map<String,String>map=new HashMap<String,String>();
+        map.put("message","success");
+        mapList.add(map);
+        return mapList;
     }
     @ResponseBody
     @RequestMapping("/deleteProjectRisk")
