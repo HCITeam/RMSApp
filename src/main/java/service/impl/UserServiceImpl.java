@@ -54,4 +54,17 @@ public class UserServiceImpl implements UserService {
         }
         return  null;
     }
+    @Override
+    public User register(String name,String password){
+        User user=userDAO.getUserByName(name);
+        if(user!=null){
+            return null;
+        }
+        User newUser=new User();
+        newUser.setName(name);
+        newUser.setPassword(password);
+        userDAO.add(newUser);
+        newUser=userDAO.getUserByName(name);
+        return  newUser;
+    }
 }

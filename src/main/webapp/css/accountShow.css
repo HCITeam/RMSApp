@@ -1,0 +1,14 @@
+.accountBox
+{
+    float:left;
+    background-color: #b2a980;
+    width:200px;
+    height:200px;
+    margin:10px;
+
+}
+
+#showProjectDiv
+{
+    display:inline;
+}

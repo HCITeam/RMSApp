@@ -1,0 +1,131 @@
+.allContant
+{
+    height:700px;
+    background-color: #333439;
+    padding-top:64px;
+}
+.titleContant
+{
+    width:600px;
+    height:70px;
+}
+
+.contantTitle{
+    padding-top:100px;
+    width: 600px;
+    height:70px;
+    font-family: 黑体 ;
+}
+
+.contanter
+{
+    color: white;
+    text-align: center;
+    font-size: 50px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.loginBox
+{
+    width:300px;
+    height:17%;
+    padding-top: 0px;
+}
+.contantInputer
+{
+    text-align: center;
+    font-size:23px;
+    outline:none;
+    border-style:none;
+    width:100%;
+    height:50%;
+    color: #c8c8c8;
+}
+
+.boxDiv
+{
+    height:50%;
+}
+.loginDiv,.contantInputer
+{
+
+    background-color: #2b2c30;
+}
+.loginDiv
+{
+    margin-left: auto;
+    margin-right: auto;
+    width:600px;
+    height:400px;
+}
+.boxContant
+{
+    margin:0 auto;
+    width:1200px;
+    height:0px;
+}
+
+.mainBox
+{
+    width:360px;
+    margin-left:20px;
+    margin-right:20px;
+    display:none;
+}
+.boxTitle
+{
+    margin-top:10px;
+    color:white;
+    font-size:30px;
+}
+.box1,.box2,.box3
+{
+    margin-top:80px;
+}
+.boxText
+{
+    margin-top:10px;
+    font-size:12px;
+    color:white;
+}
+.mainBoxDiv
+{
+    height:230px;
+}
+.sonBoxDiv
+{
+    width:70%;
+    height:400px;
+    margin-top:50px;
+    margin-left:50px;
+    display:none;
+
+
+}
+.sonBoxContainer
+{
+    width:70%;
+    height:200px;
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.sonBoxShowDiv
+{
+    width:150px;
+    height:150px;
+
+}
+.smallBox
+{
+    margin-left: 10px;
+    width:150px;
+}
+.sonBoxTitle
+{
+    color:white;
+    font-size: 20px;
+    margin-top:20px;
+}

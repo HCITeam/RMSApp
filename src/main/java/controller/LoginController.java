@@ -31,4 +31,15 @@ public class LoginController extends  BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
+    
+    @ResponseBody
+    @RequestMapping("/register")
+    public User register(HttpServletRequest request, HttpServletResponse response){
+        Map<String, String> params=getParams(request);
+        String name=params.get("name");
+        String password=params.get("password");
+        User user=userService.register(name,password);
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        return  user;
+    }
 }
