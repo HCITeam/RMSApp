@@ -52,4 +52,5 @@ public interface BaseDAO<T> {
     @SuppressWarnings("rawtypes")
     public int getCounts(String columnName, String keyword);
 
+    public Object getNewAddedEntity();
 }

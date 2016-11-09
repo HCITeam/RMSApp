@@ -20,9 +20,9 @@ public class ProjectUserRelationshipServiceImpl implements ProjectUserRelationsh
     private ProjectUserRelationshipDAO projectUserRelationshipDAO;
     
     @Override
-    public boolean addProjectUserRelationship(ProjectUserRelationship projectUserRelationship) {
+    public ProjectUserRelationship addProjectUserRelationship(ProjectUserRelationship projectUserRelationship) {
         projectUserRelationshipDAO.add(projectUserRelationship);
-        return true;
+        return (ProjectUserRelationship)projectUserRelationshipDAO.getNewAddedEntity();
     }
     
     @Override

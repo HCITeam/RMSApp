@@ -10,8 +10,6 @@ import service.ProjectUserRelationshipService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,19 +24,16 @@ public class ProjectUserRelationshipController extends  BaseController{
    
     @RequestMapping(value="/addProjectUserRelationship",method = RequestMethod.POST)
     @ResponseBody
-    public List<Map<String,String>> addProjectUserRelationship(HttpServletRequest request, HttpServletResponse response){
+    public ProjectUserRelationship  addProjectUserRelationship(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          userId=Integer.parseInt(params.get("userId"));
          projectId=Integer.parseInt(params.get("projectId"));
         ProjectUserRelationship projectUserRelationship=new ProjectUserRelationship();
         projectUserRelationship.setUserId(userId);
         projectUserRelationship.setProjectId(projectId);
-        projectUserRelationshipService.addProjectUserRelationship(projectUserRelationship);
-        List<Map<String,String>>mapList=new ArrayList<Map<String,String>>();
-        Map<String,String>map=new HashMap<String,String>();
-        map.put("message","success");
-        mapList.add(map);
-        return mapList;
+        projectUserRelationship=projectUserRelationshipService.addProjectUserRelationship(projectUserRelationship);
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        return projectUserRelationship;
     }
     @ResponseBody
     @RequestMapping("/deleteProjectUserRelationship")

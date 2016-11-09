@@ -20,9 +20,9 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectDAO projectDAO;
     
     @Override
-    public boolean addProject(Project project) {
+    public Project addProject(Project project) {
         projectDAO.add(project);
-        return true;
+        return (Project)projectDAO.getNewAddedEntity();
     }
     
     @Override

@@ -20,9 +20,9 @@ public class ProjectRiskServiceImpl implements ProjectRiskService {
     private  ProjectRiskDAO projectRiskDAO;
     
     @Override
-    public boolean addProjectRisk(ProjectRisk projectRisk) {
+    public ProjectRisk addProjectRisk(ProjectRisk projectRisk) {
          projectRiskDAO.add(projectRisk);
-        return true;
+        return (ProjectRisk)projectRiskDAO.getNewAddedEntity();
     }
     
     @Override

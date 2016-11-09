@@ -20,9 +20,9 @@ public class ProjectTrackServiceImpl  implements ProjectTrackService{
     private ProjectTrackDAO projectTrackDAO;
     
     @Override
-    public boolean addProjectTrack(ProjectTrack projectTrack) {
+    public ProjectTrack addProjectTrack(ProjectTrack projectTrack) {
         projectTrackDAO.add(projectTrack);
-        return true;
+        return (ProjectTrack)projectTrackDAO.getNewAddedEntity();
     }
     
     @Override

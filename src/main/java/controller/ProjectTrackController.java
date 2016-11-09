@@ -11,8 +11,6 @@ import service.ProjectTrackService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +26,7 @@ public class ProjectTrackController extends  BaseController {
     
     @RequestMapping(value="/addProjectTrack",method = RequestMethod.POST)
     @ResponseBody
-    public List<Map<String,String>> addProjectTrack(HttpServletRequest request, HttpServletResponse response){
+    public ProjectTrack addProjectTrack(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          project_id=Integer.parseInt(params.get("projectId"));
          risk=params.get("risk");
@@ -44,13 +42,9 @@ public class ProjectTrackController extends  BaseController {
         projectTrack.setTracker(tracker);
        
         projectTrack.setUpdateTime(Timestamp.valueOf(update_time));
-        projectTrackService.addProjectTrack(projectTrack);
-        List<Map<String,String>>mapList=new ArrayList<Map<String,String>>();
-        Map<String,String>map=new HashMap<String,String>();
-        map.put("message","success");
-        mapList.add(map);
+        projectTrack=projectTrackService.addProjectTrack(projectTrack);
         response.setHeader("Access-Control-Allow-Origin", "*");
-        return mapList;
+        return projectTrack;
     }
     @ResponseBody
     @RequestMapping("/deleteProjectTrack")

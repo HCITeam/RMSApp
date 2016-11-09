@@ -19,9 +19,10 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
     
     @Override
-    public boolean addUser(User user) {
+    public User addUser(User user) {
         userDAO.add(user);
-        return true;
+        user=(User)userDAO.getNewAddedEntity();
+        return user;
     }
     
     @Override
@@ -64,7 +65,7 @@ public class UserServiceImpl implements UserService {
         newUser.setName(name);
         newUser.setPassword(password);
         userDAO.add(newUser);
-        newUser=userDAO.getUserByName(name);
+        newUser=(User)userDAO.getNewAddedEntity();
         return  newUser;
     }
 }

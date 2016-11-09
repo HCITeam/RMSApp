@@ -181,5 +181,9 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         int count = Integer.parseInt(criteria.setProjection(Projections.rowCount()).uniqueResult().toString());
         return count;
     }
-
+    public Object getNewAddedEntity(){
+        Session session = sessionFactory.getCurrentSession();
+        List<Object> list=session.createQuery("From "+entityClass.getName()).list();
+        return list.get(list.size()-1);
+    }
 }

@@ -5,7 +5,7 @@ package service;
  */
 import entity.User;
 public interface UserService {
-    public boolean addUser(User user);
+    public User addUser(User user);
     public boolean deleteUser(User user);
     public boolean updateUser(User user);
     public User findUserByName(String name);
