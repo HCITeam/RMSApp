@@ -1,0 +1,84 @@
+.mainDiv
+{
+    width:100%;
+    color:white;
+    font-size: 80px;
+}
+.mainDivSon
+{
+    width:100%;
+    display:none;
+}
+#mainDivSon
+{
+    height:400px;
+}
+#testDiv2
+{
+    width:100%;
+    height:700px;
+    background-color: #390b2a;
+    display:none;
+}
+#testDiv3
+{
+    width:100%;
+    height:700px;
+    background-color: #051239;
+    display:none;
+}
+.sonTitleImg
+{
+    height:70px;
+
+}
+
+.divSonIconBar
+{
+    width:100%;
+    margin-top:-80px;
+}
+.sonTitleIcon
+{
+    height:20px;
+    float: right;
+    margin-right:50px;
+}
+.sonTitleIcon:hover
+{
+    margin-top:-3px;
+}
+.setPointer:hover
+{
+    cursor:pointer;
+}
+.newProjectInputer
+{
+    width:300px;
+}
+.newProjectIconBar
+{
+    margin-top:-40px;
+
+    margin-bottom: 70px;
+}
+.newProjectIcon
+{
+    height:20px;
+    margin-left:20px;
+    margin-right: 20px;
+}
+.projeceArea
+{
+    font-size: 25px;
+    margin-top: 20px;
+    background-color: #2b2c30;
+    border:0;
+    color:white;
+    width:600px;
+    overflow: hidden;
+}
+.newProName
+{
+    font-size:25px;
+}

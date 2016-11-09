@@ -10,6 +10,8 @@ import service.ProjectService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
@@ -24,7 +26,7 @@ public class ProjectController extends BaseController{
     
     @RequestMapping(value="/addProject",method = RequestMethod.POST)
     @ResponseBody
-    public String addProject(HttpServletRequest request, HttpServletResponse response){
+    public List<Map<String,String>> addProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          name=params.get("name");
          description=params.get("description");
@@ -34,7 +36,12 @@ public class ProjectController extends BaseController{
         project.setDescription(description);
         project.setCreater(creater);
         projectService.addProject(project);
-        return "success" ;
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        List<Map<String,String>>mapList=new ArrayList<Map<String,String>>();
+        Map<String,String>map=new HashMap<String,String>();
+        map.put("message","success");
+        mapList.add(map);
+        return mapList;
     }
     @ResponseBody
     @RequestMapping("/deleteProject")
@@ -43,6 +50,7 @@ public class ProjectController extends BaseController{
          id=Integer.parseInt(params.get("id"));
         Project project=projectService.findProjectByID(id);
         projectService.deleteProject(project);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return  project;
     }
     @ResponseBody
@@ -56,6 +64,7 @@ public class ProjectController extends BaseController{
         project.setName(name);
         project.setDescription(description);
         projectService.updateProject(project);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return  project;
     }
     @ResponseBody
@@ -72,6 +81,7 @@ public class ProjectController extends BaseController{
     public Project findProjectByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          id=Integer.parseInt(params.get("id"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectService.findProjectByID(id);
         
     }

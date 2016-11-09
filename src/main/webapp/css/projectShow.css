@@ -1,0 +1,174 @@
+.projectShowDiv
+{
+    width:250px;
+    height:500px;
+    background-color: #3ab54b;
+    margin-left: 25px;
+    margin-right: 25px;
+    float: left;
+}
+.projectShowDiv:hover
+{
+    cursor:pointer;
+    margin-top: -20px;
+    background-color: lightcoral;
+}
+.projectShowBar
+{
+    margin-top: 100px;
+    height:500px;
+    margin-left: auto;
+    margin-right:auto;
+    width:3000px;
+}
+.projectManageDiv
+{
+    background-color: #42adb5;
+}
+.projectShowBarHider
+{
+    margin-bottom: 200px;
+}
+.projectShowName
+{
+    padding-top:100px;
+    background-color: #3ab54b;
+    width:100%;
+    height:150px;
+    font-size: 30px;
+}
+.projectManageName
+{
+    padding-top:100px;
+    background-color: #42adb5;
+    width:100%;
+    height:150px;
+    font-size: 30px;
+}
+.projectShowCreater
+{
+    font-size: 25px;
+    height:50px;
+    background-color: #303136;
+}
+
+.projectShowText
+{
+    padding: 10px;
+    font-size: 18px;
+    height:170px;
+    background-color: #303136;
+}
+.projectCard
+{
+    width:80%;
+    height:700px;
+    margin:0 auto;
+    display:none;
+
+}
+
+.mainDivSon,.projectCard
+{
+    transition: all 0s;
+    -moz-transition: all 0s;	/* Firefox 4 */
+    -webkit-transition: all 0s;	/* Safari 和 Chrome */
+    -o-transition: all 0s;	/* Opera */
+}
+
+
+.proLeft,.proRight
+{
+    height:700px;
+    float:left;
+}
+.proMid
+{
+    height:700px;
+    width:1%;
+    float:left;
+}
+.proLeft
+{
+    width:25%;
+}
+
+.proRight
+{
+    width:74%;
+    background-color: #333439;
+}
+.proLeftName,.proLeftShow
+{
+    background-color: #333439;
+    width:100%;
+}
+.proLeftName
+{
+    height:100px;
+}
+.proLeftMid
+{
+    height:10px;
+    width:100%;
+}
+.proLeftShow
+{
+    height:570px;
+    padding-top: 20px;
+}
+.proLeftNameShow
+{
+    font-size:30px;
+    padding-top:30px;
+}
+.riskListShow
+{
+    width:80%;
+    height:550px;
+    margin-left:auto;
+    margin-right:auto;
+    overflow: auto;
+}
+.riskListTab,.riskShowTab
+{
+    font-size: 20px;
+    width:100%;
+}
+.riskListTab td
+{
+    text-align: center;
+    background-color: #2b2c30;
+    margin-top:10px;
+}
+.riskListTab td:hover
+{
+    cursor:pointer;
+}
+.proRightTitle
+{
+    margin-top:20px;
+    font-size: 30px;
+}
+.proRightShow
+{
+    font-size:15px;
+    padding-top:20px;
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+    width:80%;
+    height:100px;
+    overflow: hidden;
+}
+.proRightShowArea
+{
+    font-size:15px;
+    width:90%;
+    height:90%;
+    background-color: transparent;
+    border:0;
+    color:white;
+
+    overflow: hidden;
+}

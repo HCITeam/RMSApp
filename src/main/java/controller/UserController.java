@@ -33,6 +33,7 @@ public class UserController extends  BaseController{
         user.setPassword(password);
         userService.addUser(user);
         user=userService.findUserByName(name);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return user ;
     }
     @ResponseBody
@@ -42,6 +43,7 @@ public class UserController extends  BaseController{
          id=Integer.parseInt(params.get("id"));
         User user=userService.findUserByID(id);
         userService.deleteUser(user);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
     @ResponseBody
@@ -55,6 +57,7 @@ public class UserController extends  BaseController{
         user.setName(name);
         user.setPassword(password);
         userService.updateUser(user);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
     @ResponseBody
@@ -63,6 +66,7 @@ public class UserController extends  BaseController{
         Map<String, String> params=getParams(request);
          name=params.get("name");
         User user=userService.findUserByName(name);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
      int id;

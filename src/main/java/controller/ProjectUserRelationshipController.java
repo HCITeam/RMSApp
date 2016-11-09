@@ -10,6 +10,8 @@ import service.ProjectUserRelationshipService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +26,7 @@ public class ProjectUserRelationshipController extends  BaseController{
    
     @RequestMapping(value="/addProjectUserRelationship",method = RequestMethod.POST)
     @ResponseBody
-    public String addProjectUserRelationship(HttpServletRequest request, HttpServletResponse response){
+    public List<Map<String,String>> addProjectUserRelationship(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          userId=Integer.parseInt(params.get("userId"));
          projectId=Integer.parseInt(params.get("projectId"));
@@ -32,7 +34,11 @@ public class ProjectUserRelationshipController extends  BaseController{
         projectUserRelationship.setUserId(userId);
         projectUserRelationship.setProjectId(projectId);
         projectUserRelationshipService.addProjectUserRelationship(projectUserRelationship);
-        return "success" ;
+        List<Map<String,String>>mapList=new ArrayList<Map<String,String>>();
+        Map<String,String>map=new HashMap<String,String>();
+        map.put("message","success");
+        mapList.add(map);
+        return mapList;
     }
     @ResponseBody
     @RequestMapping("/deleteProjectUserRelationship")
