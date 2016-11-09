@@ -21,7 +21,13 @@ import java.util.Map;
 public class ProjectUserRelationshipController extends  BaseController{
     @Autowired
     private ProjectUserRelationshipService projectUserRelationshipService;
-   
+
+    /**
+     * 新增项目成员
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value="/addProjectUserRelationship",method = RequestMethod.POST)
     @ResponseBody
     public ProjectUserRelationship  addProjectUserRelationship(HttpServletRequest request, HttpServletResponse response){
@@ -35,6 +41,13 @@ public class ProjectUserRelationshipController extends  BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectUserRelationship;
     }
+
+    /**
+     * 删除项目成员
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/deleteProjectUserRelationship")
     public ProjectUserRelationship deleteProjectUserRelationship(HttpServletRequest request, HttpServletResponse response){
@@ -45,7 +58,13 @@ public class ProjectUserRelationshipController extends  BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  projectUserRelationship;
     }
-    
+
+    /**
+     * 通过用户查询项目成员关系
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectUserRelationshipByUser")
     public List<ProjectUserRelationship> findProjectUserRelationshipByUser(HttpServletRequest request, HttpServletResponse response){
@@ -55,7 +74,13 @@ public class ProjectUserRelationshipController extends  BaseController{
         return projectUserRelationshipService.findProjectUserRelationshipByUser(userId);
         
     }
-    
+
+    /**
+     * 通过项目查询
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectUserRelationshipByProject")
     public List<ProjectUserRelationship> findProjectUserRelationshipByProject(HttpServletRequest request, HttpServletResponse response){
@@ -65,6 +90,13 @@ public class ProjectUserRelationshipController extends  BaseController{
         return projectUserRelationshipService.findProjectUserRelationshipByProject(projectId);
         
     }
+
+    /**
+     * 通过ID查询
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectUserRelationshipByID")
     public ProjectUserRelationship findProjectUserRelationshipByID(HttpServletRequest request, HttpServletResponse response){

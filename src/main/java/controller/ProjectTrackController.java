@@ -23,7 +23,13 @@ public class ProjectTrackController extends  BaseController {
     
     @Autowired
     private ProjectTrackService projectTrackService;
-    
+
+    /**
+     * 新增跟踪
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value="/addProjectTrack",method = RequestMethod.POST)
     @ResponseBody
     public ProjectTrack addProjectTrack(HttpServletRequest request, HttpServletResponse response){
@@ -46,6 +52,13 @@ public class ProjectTrackController extends  BaseController {
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrack;
     }
+
+    /**
+     * 删除跟踪
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/deleteProjectTrack")
     public ProjectTrack deleteProjectTrack(HttpServletRequest request, HttpServletResponse response){
@@ -56,6 +69,13 @@ public class ProjectTrackController extends  BaseController {
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  projectTrack;
     }
+
+    /**
+     * 更新跟踪
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/updateProjectTrack")
     public ProjectTrack updateProjectTrack(HttpServletRequest request, HttpServletResponse response){
@@ -81,6 +101,13 @@ public class ProjectTrackController extends  BaseController {
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrack;
     }
+
+    /**
+     * 查询某个项目的跟踪信息
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectTrackByProject")
     public List<ProjectTrack> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
@@ -90,6 +117,13 @@ public class ProjectTrackController extends  BaseController {
         return projectTrackService.findProjectTrackByProject(project_id);
        
     }
+
+    /**
+     * 通过跟踪者查询跟踪
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectTrackByTracker")
     public List<ProjectTrack> findProjectTrackByTracker(HttpServletRequest request, HttpServletResponse response){
@@ -99,7 +133,13 @@ public class ProjectTrackController extends  BaseController {
         return projectTrackService.findProjectTrackByTracker(tracker);
        
     }
-    
+
+    /**
+     * 通过ID查询
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectTrackByID")
     public ProjectTrack findProjectTrackByID(HttpServletRequest request, HttpServletResponse response){

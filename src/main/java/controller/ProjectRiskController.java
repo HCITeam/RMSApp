@@ -21,7 +21,13 @@ import java.util.Map;
 public class ProjectRiskController extends BaseController{
     @Autowired
     private ProjectRiskService projectRiskService;
-    
+
+    /**
+     * 为项目新增风险条目
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value="/addProjectRisk",method = RequestMethod.POST)
     @ResponseBody
     public ProjectRisk addProjectRisk(HttpServletRequest request, HttpServletResponse response){
@@ -47,6 +53,13 @@ public class ProjectRiskController extends BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectRisk;
     }
+
+    /**
+     * 删除某个项目的某条风险
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/deleteProjectRisk")
     public ProjectRisk deleteProjectRisk(HttpServletRequest request, HttpServletResponse response){
@@ -57,6 +70,13 @@ public class ProjectRiskController extends BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  projectRisk;
     }
+
+    /**
+     * 更新项目风险条目
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/updateProjectRisk")
     public ProjectRisk updateProjectRisk(HttpServletRequest request, HttpServletResponse response){
@@ -83,6 +103,13 @@ public class ProjectRiskController extends BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  projectRisk;
     }
+
+    /**
+     * 查询某个项目的所有风险条目
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectRiskByProject")
     public List<ProjectRisk> findProjectRiskByProject(HttpServletRequest request, HttpServletResponse response){
@@ -92,7 +119,13 @@ public class ProjectRiskController extends BaseController{
         return projectRiskService.findProjectRiskByProject(project_id);
        
     }
-    
+
+    /**
+     * 通过ID查询
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectRiskByID")
     public ProjectRisk findProjectRiskByID(HttpServletRequest request, HttpServletResponse response){

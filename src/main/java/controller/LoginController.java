@@ -20,7 +20,13 @@ public class LoginController extends  BaseController{
     
     @Autowired
     private UserService userService;
-    
+
+    /**
+     * 登录请求
+     * @param request
+     * @param response
+     * @return 登录的用户信息
+     */
     @ResponseBody
     @RequestMapping("/login")//if login failed,return null;else return the user
     public User login(HttpServletRequest request, HttpServletResponse response){
@@ -31,7 +37,13 @@ public class LoginController extends  BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
-    
+
+    /**
+     * 注册用户
+     * @param request
+     * @param response
+     * @return 用户信息
+     */
     @ResponseBody
     @RequestMapping("/register")
     public User register(HttpServletRequest request, HttpServletResponse response){

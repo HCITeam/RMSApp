@@ -20,8 +20,13 @@ public class UserController extends  BaseController{
     
     @Autowired
     private UserService userService;
-    
- 
+
+    /**
+     * 新增用户
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value="/addUser",method = RequestMethod.POST)
     @ResponseBody
     public User addUser(HttpServletRequest request, HttpServletResponse response){
@@ -35,6 +40,13 @@ public class UserController extends  BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return user ;
     }
+
+    /**
+     * 删除用户
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/deleteUser")
     public User deleteUser(HttpServletRequest request, HttpServletResponse response){
@@ -45,6 +57,13 @@ public class UserController extends  BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
+
+    /**
+     * 更新用户信息
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/updateUser")
     public User updateUser(HttpServletRequest request, HttpServletResponse response){
@@ -59,6 +78,13 @@ public class UserController extends  BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
+
+    /**
+     * 通过用户名查询用户
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findUserByName")
     public User findUserByName(HttpServletRequest request, HttpServletResponse response){
@@ -68,6 +94,13 @@ public class UserController extends  BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
+
+    /**
+     * 通过ID查询用户
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findUserByID")
     public User findUserByID(HttpServletRequest request, HttpServletResponse response){

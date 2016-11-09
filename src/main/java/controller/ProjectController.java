@@ -21,7 +21,13 @@ public class ProjectController extends BaseController{
     
     @Autowired
     private ProjectService projectService;
-    
+
+    /**
+     * 新增项目，操作者成为该项目的项目经理
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value="/addProject",method = RequestMethod.POST)
     @ResponseBody
     public Project addProject(HttpServletRequest request, HttpServletResponse response){
@@ -37,6 +43,13 @@ public class ProjectController extends BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return project;
     }
+
+    /**
+     * 删除项目
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/deleteProject")
     public Project deleteProject(HttpServletRequest request, HttpServletResponse response){
@@ -47,6 +60,13 @@ public class ProjectController extends BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  project;
     }
+
+    /**
+     * 更新项目信息
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/updateProject")
     public Project updateProject(HttpServletRequest request, HttpServletResponse response){
@@ -61,6 +81,13 @@ public class ProjectController extends BaseController{
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  project;
     }
+
+    /**
+     * 通过用户查询其创建的项目
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectByCreater")
     public List<Project> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
@@ -70,7 +97,14 @@ public class ProjectController extends BaseController{
         return projectService.findProjectByCreater(creater);
        
     }
-    
+
+
+    /**
+     * 通过ID查询用户
+     * @param request
+     * @param response
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/findProjectByID")
     public Project findProjectByID(HttpServletRequest request, HttpServletResponse response){
