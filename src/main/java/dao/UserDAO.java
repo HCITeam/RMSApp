@@ -7,6 +7,17 @@ import entity.User;
  */
 
 public interface UserDAO extends BaseDAO<User>{
+    /**
+     * 用户名查询
+     * @param userName
+     * @return
+     */
     public User getUserByName(String userName);
+
+    /**
+     * 用户id查询
+     * @param id
+     * @return
+     */
     public User getUserByID(int id);
 }

@@ -8,9 +8,12 @@ import entity.User;
  */
 @Repository
 public class UserDAOImpl extends BaseDAOImpl<User> implements UserDAO {
+
+    @Override
     public User getUserByName(String userName){
-       return  getByColumn("name",userName);
+        return  getByColumn("name",userName);
     }
+    @Override
     public User getUserByID(int id){
         return  getByColumn("id",id);
     }

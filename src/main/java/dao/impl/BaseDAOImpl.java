@@ -29,35 +29,68 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         entityClass = (Class) params[0];
     }
 
+    /**
+     * 数据库添加
+     * @param t
+     */
     public void add(T t){
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(t);
     }
+    /**
+     * 数据库删除操作
+     * @param t
+     */
     public void delete(T t){
         Session session = sessionFactory.getCurrentSession();
         session.delete(t);
     }
+    /**
+     * 数据库更新操作
+     * @param t
+     */
     public void update(T t){
         Session session = sessionFactory.getCurrentSession();
         session.update(t);
     }
 
+    /**
+     * 执行sql语句
+     * @param sql
+     * @return
+     */
     public List<?> doSqlQuery(String sql){
         Session session = sessionFactory.getCurrentSession();
         return session.createSQLQuery(sql).list();
     }
 
+    /**
+     * 执行hql语句
+     * @param hql
+     * @return
+     */
     public List<?> doHqlQuery(String hql) {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery(hql).list();
     }
 
+    /**
+     * id查询数据库
+     * @param id
+     * @return
+     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public T getById(String id){
         Session session = sessionFactory.getCurrentSession();
         return (T)session.get(entityClass, id);
     }
 
+    /**
+     * 列名单一查询数据库
+     * @param column
+     * @param value
+     * @return
+     */
     @SuppressWarnings({"rawtypes", "unchecked" })
     public T getByColumn(String column, Object value) {
         Session session = sessionFactory.getCurrentSession();
@@ -70,6 +103,13 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
             return (T)list.get(0);
         }
     }
+
+    /**
+     * 列名多项查询
+     * @param column
+     * @param value
+     * @return
+     */
     @SuppressWarnings({"rawtypes", "unchecked" })
     public List<T> getListByColumn(String column, Object value) {
         Session session = sessionFactory.getCurrentSession();
@@ -78,6 +118,14 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return criteria.list();
     }
 
+    /**
+     * 控制页数
+     * @param column
+     * @param value
+     * @param page
+     * @param size
+     * @return
+     */
     @SuppressWarnings({"rawtypes", "unchecked" })
     public List<T> getListByColumn(String column, Object value, int page, int size) {
         Session session = sessionFactory.getCurrentSession();
@@ -87,6 +135,17 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         criteria.setMaxResults(size);
         return criteria.list();
     }
+
+    /**
+     * 控制排序
+     * @param column
+     * @param value
+     * @param page
+     * @param size
+     * @param ordercolumn
+     * @param asc
+     * @return
+     */
     @SuppressWarnings({"rawtypes", "unchecked" })
     public List<T> getListByColumn(String column, Object value, int page, int size, String ordercolumn, boolean asc) {
         Session session = sessionFactory.getCurrentSession();
@@ -104,6 +163,16 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return criteria.list();
     }
 
+    /**
+     * 相似查询
+     * @param column
+     * @param value
+     * @param page
+     * @param size
+     * @param ordercolumn
+     * @param asc
+     * @return
+     */
     @SuppressWarnings({"rawtypes", "unchecked" })
     public List<T> getListByLikeColumn(String column, Object value, int page, int size, String ordercolumn, boolean asc) {
         Session session = sessionFactory.getCurrentSession();
@@ -121,6 +190,10 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return criteria.list();
     }
 
+    /**
+     * 获取全部
+     * @return
+     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public List<T> getAll(){
         Session session = sessionFactory.getCurrentSession();
@@ -128,6 +201,12 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return list;
     }
 
+    /**
+     * 分页获取
+     * @param page
+     * @param size
+     * @return
+     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public List<T> getAllByPage(int page,int size){
         Session session = sessionFactory.getCurrentSession();
@@ -138,6 +217,12 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return criteria.list();
     }
 
+    /**
+     * 我也不知道欸
+     * @param column
+     * @param asc
+     * @return
+     */
     @Override
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public List<Object> getPropertyList(String column, boolean asc) {
@@ -152,6 +237,14 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return query.list();
     }
 
+    /**
+     * 同不知道欸
+     * @param column
+     * @param paramColumn
+     * @param value
+     * @param asc
+     * @return
+     */
     @Override
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public List<Object> getPropertyListByColumn(String column, String paramColumn, String value, boolean asc) {
@@ -166,6 +259,10 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return query.list();
     }
 
+    /**
+     * 统计数目
+     * @return
+     */
     @SuppressWarnings("rawtypes")
     public int getCounts(){
         Session session = sessionFactory.getCurrentSession();
@@ -174,6 +271,12 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         return count;
     }
 
+    /**
+     * 分类统计数目
+     * @param columnName
+     * @param keyword
+     * @return
+     */
     public int getCounts(String columnName, String keyword){
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(entityClass)
@@ -181,6 +284,11 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
         int count = Integer.parseInt(criteria.setProjection(Projections.rowCount()).uniqueResult().toString());
         return count;
     }
+
+    /**
+     * 获得最新添加的数据
+     * @return
+     */
     public Object getNewAddedEntity(){
         Session session = sessionFactory.getCurrentSession();
         List<Object> list=session.createQuery("From "+entityClass.getName()).list();
