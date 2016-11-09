@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addUser(User user) {
         userDAO.add(user);
-        user=(User)userDAO.getNewAddedEntity();
-        return user;
+        return (User)userDAO.getNewAddedEntity();
+        
     }
     
     @Override
