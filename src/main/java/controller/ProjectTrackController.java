@@ -49,6 +49,7 @@ public class ProjectTrackController extends  BaseController {
         Map<String,String>map=new HashMap<String,String>();
         map.put("message","success");
         mapList.add(map);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return mapList;
     }
     @ResponseBody
@@ -58,6 +59,7 @@ public class ProjectTrackController extends  BaseController {
         int id=Integer.parseInt(params.get("id"));
         ProjectTrack projectTrack=projectTrackService.findProjectTrackByID(id);
         projectTrackService.deleteProjectTrack(projectTrack);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return  projectTrack;
     }
     @ResponseBody
@@ -82,6 +84,7 @@ public class ProjectTrackController extends  BaseController {
         projectTrack.setUpdateTime(Timestamp.valueOf(update_time));
         
         projectTrackService.updateProjectTrack(projectTrack);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrack;
     }
     @ResponseBody
@@ -89,6 +92,7 @@ public class ProjectTrackController extends  BaseController {
     public List<ProjectTrack> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          project_id=Integer.parseInt(params.get("projectId"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrackService.findProjectTrackByProject(project_id);
        
     }
@@ -97,6 +101,7 @@ public class ProjectTrackController extends  BaseController {
     public List<ProjectTrack> findProjectTrackByTracker(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          tracker=Integer.parseInt(params.get("tracker"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrackService.findProjectTrackByTracker(tracker);
        
     }
@@ -106,6 +111,7 @@ public class ProjectTrackController extends  BaseController {
     public ProjectTrack findProjectTrackByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          id=Integer.parseInt(params.get("id"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrackService.findProjectTrackByID(id);
        
     }

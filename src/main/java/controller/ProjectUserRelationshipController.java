@@ -47,6 +47,7 @@ public class ProjectUserRelationshipController extends  BaseController{
          id=Integer.parseInt(params.get("id"));
         ProjectUserRelationship projectUserRelationship=projectUserRelationshipService.findProjectUserRelationshipByID(id);
         projectUserRelationshipService.deleteProjectUserRelationship(projectUserRelationship);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return  projectUserRelationship;
     }
     
@@ -55,6 +56,7 @@ public class ProjectUserRelationshipController extends  BaseController{
     public List<ProjectUserRelationship> findProjectUserRelationshipByUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          userId=Integer.parseInt(params.get("userId"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectUserRelationshipService.findProjectUserRelationshipByUser(userId);
         
     }
@@ -64,6 +66,7 @@ public class ProjectUserRelationshipController extends  BaseController{
     public List<ProjectUserRelationship> findProjectUserRelationshipByProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          projectId=Integer.parseInt(params.get("projectId"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectUserRelationshipService.findProjectUserRelationshipByProject(projectId);
         
     }

@@ -72,6 +72,7 @@ public class ProjectController extends BaseController{
     public List<Project> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          creater=Integer.parseInt(params.get("creater"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectService.findProjectByCreater(creater);
        
     }
