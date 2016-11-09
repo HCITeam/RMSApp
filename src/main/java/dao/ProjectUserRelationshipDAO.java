@@ -12,4 +12,5 @@ public interface ProjectUserRelationshipDAO extends BaseDAO<ProjectUserRelations
   
     public List<ProjectUserRelationship> findProjectUserRelationshipByUser(int userID) ;
     public ProjectUserRelationship findProjectUserRelationshipByID(int id);
+    public ProjectUserRelationship findProjectUserRelationshipByUserAndProject(int projectId,int userId);
 }

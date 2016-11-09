@@ -27,6 +27,7 @@ public class ProjectRiskController extends BaseController{
     public ProjectRisk addProjectRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          project_id=Integer.parseInt(params.get("projectId"));
+         name=params.get("name");
          content=params.get("content");
          possibility=Integer.parseInt(params.get("possibility"));
          influenceLevel=Integer.parseInt(params.get("influenceLevel"));
@@ -35,6 +36,7 @@ public class ProjectRiskController extends BaseController{
          tracker=Integer.parseInt(params.get("tracker"));
         ProjectRisk projectRisk=new ProjectRisk();
         projectRisk.setProjectId(project_id);
+        projectRisk.setName(name);
         projectRisk.setContent(content);
         projectRisk.setPossibility(possibility);
         projectRisk.setInfluenceLevel(influenceLevel);
@@ -61,6 +63,7 @@ public class ProjectRiskController extends BaseController{
         Map<String, String> params=getParams(request);
          id=Integer.parseInt(params.get("id"));
          project_id=Integer.parseInt(params.get("projectId"));
+        name=params.get("name");
          content=params.get("content");
          possibility=Integer.parseInt(params.get("possibility"));
          influenceLevel=Integer.parseInt(params.get("influenceLevel"));
@@ -69,6 +72,7 @@ public class ProjectRiskController extends BaseController{
          tracker=Integer.parseInt(params.get("tracker"));
         ProjectRisk projectRisk=projectRiskService.findProjectRiskByID(id);
         projectRisk.setProjectId(project_id);
+        projectRisk.setName(name);
         projectRisk.setContent(content);
         projectRisk.setPossibility(possibility);
         projectRisk.setInfluenceLevel(influenceLevel);
@@ -100,6 +104,7 @@ public class ProjectRiskController extends BaseController{
     }
     int id;
     int project_id;
+    String name;
     String content;
     int possibility;
     int influenceLevel;

@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class ProjectRisk {
     private int id;
     private Integer projectId;
+    private String name;
     private String content;
     private Integer possibility;
     private Integer influenceLevel;
@@ -35,6 +36,16 @@ public class ProjectRisk {
     
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
+    }
+    
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
     
     @Basic
@@ -106,6 +117,7 @@ public class ProjectRisk {
         
         if (id != that.id) return false;
         if (projectId != null ? !projectId.equals(that.projectId) : that.projectId != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (content != null ? !content.equals(that.content) : that.content != null) return false;
         if (possibility != null ? !possibility.equals(that.possibility) : that.possibility != null) return false;
         if (influenceLevel != null ? !influenceLevel.equals(that.influenceLevel) : that.influenceLevel != null)
@@ -121,6 +133,7 @@ public class ProjectRisk {
     public int hashCode() {
         int result = id;
         result = 31 * result + (projectId != null ? projectId.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (possibility != null ? possibility.hashCode() : 0);
         result = 31 * result + (influenceLevel != null ? influenceLevel.hashCode() : 0);

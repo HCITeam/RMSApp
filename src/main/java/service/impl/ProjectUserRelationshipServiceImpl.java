@@ -21,8 +21,16 @@ public class ProjectUserRelationshipServiceImpl implements ProjectUserRelationsh
     
     @Override
     public ProjectUserRelationship addProjectUserRelationship(ProjectUserRelationship projectUserRelationship) {
-        projectUserRelationshipDAO.add(projectUserRelationship);
-        return (ProjectUserRelationship)projectUserRelationshipDAO.getNewAddedEntity();
+        int projectId=projectUserRelationship.getProjectId();
+        int userId=projectUserRelationship.getUserId();
+        ProjectUserRelationship exist=projectUserRelationshipDAO.findProjectUserRelationshipByUserAndProject(projectId,userId);
+        if(exist==null){
+            projectUserRelationshipDAO.add(projectUserRelationship);
+            return (ProjectUserRelationship)projectUserRelationshipDAO.getNewAddedEntity();
+        }else{
+            return exist;
+        }
+        
     }
     
     @Override

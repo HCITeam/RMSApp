@@ -29,4 +29,16 @@ public class ProjectUserRelationshipDAOImpl extends BaseDAOImpl<ProjectUserRelat
         return getByColumn("id",id);
     }
     
+    @Override
+    public ProjectUserRelationship findProjectUserRelationshipByUserAndProject(int projectId,int userId){
+        List<ProjectUserRelationship>list=getListByColumn("projectId",projectId);
+        if(list!=null){
+            for(int i=0;i<list.size();i++){
+                if(list.get(i).getUserId()==userId){
+                    return list.get(i);
+                }
+            }
+        }
+       return null;
+    }
 }
