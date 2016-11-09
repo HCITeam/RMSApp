@@ -65,6 +65,15 @@ public class ProjectUserRelationshipController extends  BaseController{
         return projectUserRelationshipService.findProjectUserRelationshipByProject(projectId);
         
     }
+    @ResponseBody
+    @RequestMapping("/findProjectUserRelationshipByID")
+    public ProjectUserRelationship findProjectUserRelationshipByID(HttpServletRequest request, HttpServletResponse response){
+        Map<String, String> params=getParams(request);
+        id=Integer.parseInt(params.get("id"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        return projectUserRelationshipService.findProjectUserRelationshipByID(id);
+        
+    }
     int id;
     int userId;
     int projectId;

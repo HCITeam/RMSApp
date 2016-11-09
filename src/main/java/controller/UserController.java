@@ -61,10 +61,19 @@ public class UserController extends  BaseController{
     }
     @ResponseBody
     @RequestMapping("/findUserByName")
-    public User findUser(HttpServletRequest request, HttpServletResponse response){
+    public User findUserByName(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
          name=params.get("name");
         User user=userService.findUserByName(name);
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        return  user;
+    }
+    @ResponseBody
+    @RequestMapping("/findUserByID")
+    public User findUserByID(HttpServletRequest request, HttpServletResponse response){
+        Map<String, String> params=getParams(request);
+        id=Integer.parseInt(params.get("id"));
+        User user=userService.findUserByID(id);
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
