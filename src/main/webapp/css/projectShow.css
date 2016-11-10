@@ -140,6 +140,7 @@
     text-align: center;
     background-color: #2b2c30;
     margin-top:10px;
+    height:20px;
 }
 .riskListTab td:hover
 {
@@ -149,6 +150,9 @@
 {
     margin-top:20px;
     font-size: 30px;
+    margin-left: auto;
+    margin-right:auto;
+    width:80%;
 }
 .proRightShow
 {
@@ -171,4 +175,10 @@
     color:white;
 
     overflow: hidden;
+}
+.newMemberInputer
+{
+    width:100%;
+    height:20px;
+    font-size:20px;
 }

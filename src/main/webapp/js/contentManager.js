@@ -1,5 +1,6 @@
 var rl=0;
 var rl2=0;
+var canShowRoll=true,canManRoll=true;
 $(document).ready(function () {
     $(document).scroll(function (event) {
         if($(document).scrollTop()>300)
@@ -12,7 +13,7 @@ $(document).ready(function () {
         }
     });
     $("#projectShowBar").on("mousewheel DOMMouseScroll", function (e) {
-
+        if(!canShowRoll)return;
         var delta = e.originalEvent.wheelDelta ||  // chrome & ie
             e.originalEvent.detail;              // firefox
         //var rl=parseInt($(".projectShowBar").css("margin-left"));
@@ -31,7 +32,7 @@ $(document).ready(function () {
         if(nowL<0&&nowL>minl)e.preventDefault();
     });
     $("#projectManageBar").on("mousewheel DOMMouseScroll", function (e) {
-
+        if(!canManRoll)return;
         var delta = e.originalEvent.wheelDelta ||  // chrome & ie
             e.originalEvent.detail;              // firefox
         //var rl=parseInt($(".projectShowBar").css("margin-left"));
@@ -53,9 +54,11 @@ var newTitle;
 
 function login()
 {
-    var res=myPost("login",{"name":$("#loginName").val(),"password":$("#loginPassword").val()});
+    var res=myPost("login",{"name":$("#loginName").val(),"password":$("#loginPassword").val()},"");
     if(res!=null && res.name)
     {
+        userName=res.name;
+        userID=res.id;
         loginOK();
     }
     else
@@ -63,7 +66,14 @@ function login()
         alert("登陆失败");
     }
 }
-
+function logout()
+{
+    if(userID!=-1) {
+        userName = null;
+        userID = -1;
+        location.reload();
+    }
+}
 function loginOK()
 {
 
@@ -198,22 +208,24 @@ function moveTo(location)
 
 function addConntent(name)
 {
+    if(name=="showProjectDiv")
+    {
+        showProjectBar(userID);
+    }
+    else if(name="manageProjectDiv")
+    {
+        refreshProMenageShow();
+    }
     $("#"+name).show();
 }
-function showProjectMore(proID)
-{
-    $("#projectShowContant").show();
-    $("html,body").animate({scrollTop:$("#projectShowContant").offset().top-130},500);
-}
+
+
+
 function hideProShow()
 {
     $("#projectShowContant").slideUp(500,function(){ $("html,body").animate({scrollTop:$("#showProjectDiv").offset().top-100},500);});
 }
-function showProjectMan(proID)
-{
-    $("#projectManageContant").show();
-    $("html,body").animate({scrollTop:$("#projectManageContant").offset().top-130},500);
-}
+
 function hideProMan()
 {
     $("#projectManageContant").slideUp(500,function(){ $("html,body").animate({scrollTop:$("#manageProjectDiv").offset().top-100},500);});
@@ -224,3 +236,4 @@ function shideSon(sonID)
     $("#"+sonID).slideUp(500);
     setTimeout(function(){   moveTo("topLocation");}, 500);
 }
+
