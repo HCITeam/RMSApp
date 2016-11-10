@@ -14,7 +14,7 @@ public class ProjectRisk {
     private String content;
     private Integer possibility;
     private Integer influenceLevel;
-    private Integer threshold;
+    private String threshold;
     private Integer creater;
     private Integer tracker;
     
@@ -80,11 +80,11 @@ public class ProjectRisk {
     
     @Basic
     @Column(name = "threshold")
-    public Integer getThreshold() {
+    public String getThreshold() {
         return threshold;
     }
     
-    public void setThreshold(Integer threshold) {
+    public void setThreshold(String threshold) {
         this.threshold = threshold;
     }
     

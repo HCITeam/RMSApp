@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService {
         User newUser=new User();
         newUser.setName(name);
         newUser.setPassword(password);
+        newUser.setStatus(1);
         userDAO.add(newUser);
         newUser=(User)userDAO.getNewAddedEntity();
         return  newUser;

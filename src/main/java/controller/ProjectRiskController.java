@@ -37,7 +37,7 @@ public class ProjectRiskController extends BaseController{
          content=params.get("content");
          possibility=Integer.parseInt(params.get("possibility"));
          influenceLevel=Integer.parseInt(params.get("influenceLevel"));
-         threshold=Integer.parseInt(params.get("threshold"));
+         threshold=params.get("threshold");
          creater=Integer.parseInt(params.get("creater"));
          tracker=Integer.parseInt(params.get("tracker"));
         ProjectRisk projectRisk=new ProjectRisk();
@@ -87,7 +87,7 @@ public class ProjectRiskController extends BaseController{
          content=params.get("content");
          possibility=Integer.parseInt(params.get("possibility"));
          influenceLevel=Integer.parseInt(params.get("influenceLevel"));
-         threshold=Integer.parseInt(params.get("threshold"));
+         threshold=params.get("threshold");
          creater=Integer.parseInt(params.get("creater"));
          tracker=Integer.parseInt(params.get("tracker"));
         ProjectRisk projectRisk=projectRiskService.findProjectRiskByID(id);
@@ -141,7 +141,7 @@ public class ProjectRiskController extends BaseController{
     String content;
     int possibility;
     int influenceLevel;
-    int threshold;
+    String threshold;
     int creater;
     int tracker;
 }

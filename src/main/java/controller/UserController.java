@@ -36,6 +36,7 @@ public class UserController extends  BaseController{
         User user=new User();
         user.setName(name);
         user.setPassword(password);
+        user.setStatus(1);
         user=userService.addUser(user);
         response.setHeader("Access-Control-Allow-Origin", "*");
         return user ;
