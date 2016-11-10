@@ -110,7 +110,7 @@ public class ProjectTrackController extends  BaseController {
      */
     @ResponseBody
     @RequestMapping("/findProjectTrackByRisk")
-    public List<ProjectTrack> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
+    public List<ProjectTrack> findProjectTrackByRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
         riskId=Integer.parseInt(params.get("riskId"));
         response.setHeader("Access-Control-Allow-Origin", "*");
