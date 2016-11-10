@@ -38,10 +38,10 @@ public interface ProjectTrackService {
 
     /**
      * 根据项目id查询
-     * @param projectID
+     * @param riskId
      * @return
      */
-    public List<ProjectTrack> findProjectTrackByProject(int projectID);
+    public List<ProjectTrack> findProjectTrackByRisk(int riskId);
 
     /**
      * 根据跟踪者查询

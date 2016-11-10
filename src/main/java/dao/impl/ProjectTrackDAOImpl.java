@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public class ProjectTrackDAOImpl extends  BaseDAOImpl<ProjectTrack>  implements ProjectTrackDAO{
     @Override
-    public List<ProjectTrack> findProjectTrackByProject(int projectID) {
-        return getListByColumn("projectId",projectID);
+    public List<ProjectTrack> findProjectTrackByRisk(int riskId) {
+        return getListByColumn("riskId",riskId);
     }
     
     @Override

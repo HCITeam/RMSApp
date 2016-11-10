@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Table(name = "project_track", schema = "rms")
 public class ProjectTrack {
     private int id;
-    private Integer projectId;
+    private Integer riskId;
     private String risk;
     private Integer state;
     private String cause;
@@ -28,13 +28,13 @@ public class ProjectTrack {
     }
     
     @Basic
-    @Column(name = "project_id")
-    public Integer getProjectId() {
-        return projectId;
+    @Column(name = "risk_id")
+    public Integer getRiskId() {
+        return riskId;
     }
     
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
+    public void setRiskId(Integer riskId) {
+        this.riskId = riskId;
     }
     
     @Basic
@@ -95,7 +95,7 @@ public class ProjectTrack {
         ProjectTrack that = (ProjectTrack) o;
         
         if (id != that.id) return false;
-        if (projectId != null ? !projectId.equals(that.projectId) : that.projectId != null) return false;
+        if (riskId != null ? !riskId.equals(that.riskId) : that.riskId != null) return false;
         if (risk != null ? !risk.equals(that.risk) : that.risk != null) return false;
         if (state != null ? !state.equals(that.state) : that.state != null) return false;
         if (cause != null ? !cause.equals(that.cause) : that.cause != null) return false;
@@ -108,7 +108,7 @@ public class ProjectTrack {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (projectId != null ? projectId.hashCode() : 0);
+        result = 31 * result + (riskId != null ? riskId.hashCode() : 0);
         result = 31 * result + (risk != null ? risk.hashCode() : 0);
         result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (cause != null ? cause.hashCode() : 0);

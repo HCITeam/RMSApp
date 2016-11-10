@@ -10,10 +10,10 @@ import java.util.List;
 public interface ProjectTrackDAO extends  BaseDAO<ProjectTrack> {
     /**
      * 项目id查询
-     * @param projectID
+     * @param riskId
      * @return
      */
-    public List<ProjectTrack> findProjectTrackByProject(int projectID);
+    public List<ProjectTrack> findProjectTrackByRisk(int riskId);
 
     /**
      * 跟踪者id查询

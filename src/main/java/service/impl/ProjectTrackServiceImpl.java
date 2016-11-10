@@ -43,8 +43,8 @@ public class ProjectTrackServiceImpl  implements ProjectTrackService{
     }
     
     @Override
-    public List<ProjectTrack> findProjectTrackByProject(int projectID) {
-        return projectTrackDAO.findProjectTrackByProject(projectID);
+    public List<ProjectTrack> findProjectTrackByRisk(int riskId) {
+        return projectTrackDAO.findProjectTrackByRisk(riskId);
     }
     
     @Override
