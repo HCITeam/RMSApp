@@ -15,6 +15,7 @@
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="js/contentManager.js"></script>
         <script src="js/dataManage.js"></script>
+        <script src="js/projectJS.js"></script>
     </head>
     <body  id="topLocation">
         <!--[if lt IE 8]>
@@ -25,7 +26,7 @@
         <div class="allTitle">
             <img src="img/logo.png" class="logoImg">
             <div class="icons">
-                <img src="img/box-login.png" class="topImg" onclick="moveTo('topLocation');">
+                <img src="img/box-login.png" class="topImg" onclick="logout();">
             </div>
         </div>
 
@@ -101,17 +102,17 @@
 
                 <div style="margin-top: 170px;">
                     <div class="contanter bottomLine newProjectInputer" style="width:600px">
-                        <input class="contantInputer newProName" type="text" placeholder="在这里输入新的项目名"/>
+                        <input id="newProName" class="contantInputer newProName" type="text" placeholder="在这里输入新的项目名"/>
                     </div>
 
                     <div class="contanter bottomLine newProjectInputer" style="width:600px">
-                        <textarea  rows="10" cols="30" class="projeceArea" placeholder="在这里输入项目描述"></textarea>
+                        <textarea id="newProShow"  rows="10" cols="30" class="projeceArea" placeholder="在这里输入项目描述"></textarea>
                     </div>
 
                     <div class="newProjectIconBar">
 
-                        <img src="img/yes.png" class="newProjectIcon setPointer" onclick=""/>
-                        <img src="img/delete.png" class="newProjectIcon setPointer" onclick=""/>
+                        <img src="img/yes.png" class="newProjectIcon setPointer" onclick="upPro()"/>
+                        <img src="img/delete.png" class="newProjectIcon setPointer" onclick="cancelPro()"/>
 
                     </div>
                 </div>
@@ -127,7 +128,7 @@
                     <div class="divSonIconBar">
                         <img src="img/small.png" class="sonTitleIcon setPointer" onclick="shideSon('showProjectDiv')"/>
 
-                        <img src="img/refresh.png" class="sonTitleIcon setPointer" onclick=""/>
+                        <img src="img/refresh.png" class="sonTitleIcon setPointer" onclick="refreshProjectShow()"/>
                     </div>
                 </div>
                 <div id="projectShowBarHider" class="projectShowBarHider" style="width:80%;overflow:hidden;margin-left: auto;margin-right: auto">
@@ -188,14 +189,14 @@
 
                     <div class="proLeft">
                         <div class="proLeftName">
-                            <div class="proLeftNameShow">
+                            <div id="proShowMoreTit" class="proLeftNameShow">
                                 项目1
                             </div>
                         </div>
                         <div class="proLeftMid"></div>
                         <div class="proLeftShow">
                             <div class="riskListShow">
-                                <table class="riskListTab" cellspacing="10" border="0">
+                                <table id="riskListTab"class="riskListTab" cellspacing="10" border="0">
                                     <tr> <th>风险列表</th></tr>
                                     <tr> <td>风险1</td></tr>
                                     <tr> <td>风险1</td></tr>
@@ -231,34 +232,20 @@
                     <div class="proRight">
                         <div>
                             <img src="img/small.png" class="sonTitleIcon setPointer"  onclick="hideProShow()">
-                            <div class="proRightTitle">风险1</div>
+                            <div id="proShowTitle" class="proRightTitle">风险</div>
                             <div class="fourBorder proRightShow">
-                                <textarea  disabled="disabled" class="proRightShowArea" title="风险描述">这是一个风险这是一个风险这是一个风险这是一个风险这是一个风险这是一个风险这是一个风险这是一个风险这是一个风险</textarea>
+                                <textarea id="riskShow"  disabled="disabled" class="proRightShowArea" title="风险描述">风险描述</textarea>
                             </div>
                             <div style="width:80%;margin-top:30px;margin-left:auto;margin-right:auto;">
                                 <table class="riskListTab riskShowTab" cellspacing="1" border="0" style="font-size: 15px">
-                                    <tr> <th>创建者</th><td>xxxxxr</td><th>跟踪者</th><td>xxxxxxr</td><th>可能性</th><td>高</td><th>影响程度</th><td>高</td><th>触发器</th><td>66666666</td></tr>
+                                    <tr> <th>创建者</th><td  id="riskCreater"> </td><th>跟踪者</th><td  id="riskTracker"> </td><th>可能性</th><td  id="riskPoss"> </td><th>影响程度</th><td  id="riskInfluence"> </td><th>触发器</th><td id="riskThreshold"> </td></tr>
                                 </table>
                             </div>
                             <div class="riskListShow" style="height:300px;margin-top: 30px">
-                                <table class="riskListTab riskShowTab" cellspacing="10" border="0">
+                                <table id="riskListTable" class="riskListTab riskShowTab" cellspacing="10" border="0">
                                     <tr> <th colspan="2">风险日志</th></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-                                    <tr><td>出现了</td> <td>他出现了</td></tr>
-
-                                    <tr> <td colspan="2">+</td></tr>
+                                    <tr><td colspan="2">暂无</td></tr>
+                                    <tr><td colspan="2">+</td></tr>
                                 </table>
                             </div>
                         </div>
@@ -285,10 +272,10 @@
                     <div class="divSonIconBar">
                         <img src="img/small.png" class="sonTitleIcon setPointer" onclick="shideSon('manageProjectDiv')"/>
 
-                        <img src="img/refresh.png" class="sonTitleIcon setPointer" onclick=""/>
+                        <img src="img/refresh.png" class="sonTitleIcon setPointer" onclick="refreshProMenageShow()"/>
                     </div>
                 </div>
-                <div class="projectShowBarHider" style="width:80%;overflow:hidden;margin-left: auto;margin-right: auto">
+                <div id="proManaBarHider"class="projectShowBarHider" style="width:80%;overflow:hidden;margin-left: auto;margin-right: auto">
                     <div id="projectManageBar" class="projectShowBar">
                         <div class="projectShowDiv projectManageDiv" onclick="showProjectMan('面码')">
                             <div class="projectManageName">项目1</div>
@@ -347,15 +334,15 @@
 
                     <div class="proLeft">
                         <div class="proLeftName">
-                            <div class="proLeftNameShow">
+                            <div id="proManMoreName" class="proLeftNameShow">
                                 项目1
                             </div>
                         </div>
                         <div class="proLeftMid"></div>
                         <div class="proLeftShow">
                             <div class="riskListShow">
-                                <table class="riskListTab" cellspacing="10" border="0">
-                                    <tr> <th>码农1列表</th></tr>
+                                <table id="proMemberList" class="riskListTab" cellspacing="10" border="0">
+                                    <tr> <th>成员列表</th></tr>
                                     <tr> <td>码农1</td></tr>
                                     <tr> <td>码农1</td></tr>
                                     <tr> <td>码农1</td></tr>
@@ -394,19 +381,7 @@
                             <div class="riskListShow" style="height:500px;margin-top: 30px">
                                 <table class="riskListTab riskShowTab" cellspacing="10" border="0">
                                     <tr> <th colspan="2">权限列表</th></tr>
-                                    <tr><td>查看</td> <td>不可</td></tr>
-                                    <tr><td>修改</td> <td>不可</td></tr>
-                                    <tr><td>查看</td> <td>不可</td></tr>
-                                    <tr><td>修改</td> <td>不可</td></tr>
-                                    <tr><td>查看</td> <td>不可</td></tr>
-                                    <tr><td>修改</td> <td>不可</td></tr>
-                                    <tr><td>查看</td> <td>不可</td></tr>
-                                    <tr><td>修改</td> <td>不可</td></tr>
-                                    <tr><td>查看</td> <td>不可</td></tr>
-                                    <tr><td>修改</td> <td>不可</td></tr>
-                                    <tr><td>查看</td> <td>不可</td></tr>
-                                    <tr><td>修改</td> <td>不可</td></tr>
-                                    <tr><td>查看</td> <td>不可</td></tr>
+                                    <tr><td>查看</td> <td>可</td></tr>
                                     <tr><td>修改</td> <td>不可</td></tr>
 
                                     <tr> <td colspan="2">+</td></tr>
