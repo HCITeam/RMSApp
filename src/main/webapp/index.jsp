@@ -18,6 +18,11 @@
         <script src="js/projectJS.js"></script>
     </head>
     <body  id="topLocation">
+    <div id="loader">
+        <div id="loaderDiv">
+            <img id="loaderImg" src="img/preloader.gif" class="" onclick="">
+        </div>
+    </div>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -26,7 +31,7 @@
         <div class="allTitle">
             <img src="img/logo.png" class="logoImg">
             <div class="icons">
-                <img src="img/box-login.png" class="topImg" onclick="logout();">
+                <img src="img/logout.png" class="topImg" onclick="logout();">
             </div>
         </div>
 
@@ -36,7 +41,7 @@
             </div>
             <div class="loginDiv">
                 <div class="boxDiv">
-                    <img src="img/box-login.png" class="boxImg" onclick="login()">
+                    <img src="img/login.png" class="boxImg" onclick="login()">
 
                 </div>
                 <div class="loginBox contanter bottomLine">
@@ -49,7 +54,7 @@
             <div  class="boxContant">
                 <div class="mainBox leftFlow box1">
                     <div class="mainBoxDiv">
-                        <img src="img/box-login.png" class="boxImg boxImg1" onclick="smallBox(1)"/>
+                        <img src="img/project.png" class="boxImg boxImg1" onclick="smallBox(1)"/>
                     </div>
                     <div class="boxTitle">
                         项目管理
@@ -71,7 +76,7 @@
                 </div>
                 <div class="mainBox leftFlow box3">
                     <div class="mainBoxDiv">
-                        <img src="img/box-login.png" class="boxImg boxImg1" onclick="smallBox(3)"/>
+                        <img src="img/sys.png" class="boxImg boxImg1" onclick="smallBox(3)"/>
                     </div>
                     <div class="boxTitle">
                         系统管理
@@ -245,17 +250,18 @@
                                 <table id="riskListTable" class="riskListTab riskShowTab" cellspacing="10" border="0">
                                     <tr> <th colspan="2">风险日志</th></tr>
                                     <tr><td colspan="2">暂无</td></tr>
-                                    <tr><td colspan="2">+</td></tr>
                                 </table>
                             </div>
                         </div>
 
                         <div>
-                            <img src="img/refresh.png" class="bottomIcon setPointer" onclick=""/>
+                            <img id="riskBtnYes" src="img/yes.png" class="bottomIcon setPointer" onclick="doNewRisk()"/>
 
-                            <img src="img/small.png" class="bottomIcon setPointer" onclick=""/>
+                            <img id="riskBtnNo" src="img/delete.png" class="bottomIcon setPointer" onclick="delNewRisk()"/>
 
-                            <img src="img/refresh.png" class="bottomIcon setPointer" onclick=""/>
+                            <img id="riskBtnRes" src="img/refresh.png" class="bottomIcon setPointer" onclick=""/>
+
+                            <img id="riskBtnEdit" src="img/edit.png" class="bottomIcon setPointer" onclick="editRisk()"/>
                         </div>
                     </div>
 
@@ -377,7 +383,7 @@
                     <div class="proRight">
                         <div>
                             <img src="img/small.png" class="sonTitleIcon setPointer" style="margin-top:0px;" onclick="hideProMan()">
-                            <div class="proRightTitle">码农1</div>
+                            <div id="showMemberName" class="proRightTitle">码农1</div>
                             <div class="riskListShow" style="height:500px;margin-top: 30px">
                                 <table class="riskListTab riskShowTab" cellspacing="10" border="0">
                                     <tr> <th colspan="2">权限列表</th></tr>
@@ -390,11 +396,11 @@
                         </div>
 
                         <div style="margin-top: 0px">
-                            <img src="img/refresh.png" class="bottomIcon setPointer" onclick=""/>
+                            <img src="img/refresh.png" style="display:none" class="bottomIcon setPointer" onclick=""/>
 
-                            <img src="img/small.png" class="bottomIcon setPointer" onclick=""/>
+                            <img src="img/small.png" style="display:none" class="bottomIcon setPointer" onclick=""/>
 
-                            <img src="img/refresh.png" class="bottomIcon setPointer" onclick=""/>
+                            <img src="img/delete.png" class="bottomIcon setPointer" onclick="delMember();"/>
                         </div>
                     </div>
 
@@ -418,21 +424,21 @@
 
                     <div style="margin-top: 100px;">
                         <div class="contanter bottomLine newProjectInputer" style="width:300px">
-                            <input class="contantInputer newProName" type="text" placeholder="在这里输入新的用户名"/>
+                            <input id="newAccName" class="contantInputer newProName" type="text" placeholder="在这里输入新的用户名"/>
                         </div>
 
                         <div class="contanter bottomLine newProjectInputer" style="width:300px">
-                            <input class="contantInputer newProName" type="password" placeholder="在这里输入用户密码"/>
+                            <input id="newAccPass" class="contantInputer newProName" type="password" placeholder="在这里输入用户密码"/>
                         </div>
 
                         <div class="contanter bottomLine newProjectInputer" style="width:300px">
-                            <input class="contantInputer newProName" type="password" placeholder="在这里确认用户密码"/>
+                            <input id="newAccRePass" class="contantInputer newProName" type="password" placeholder="在这里确认用户密码"/>
                         </div>
 
                         <div class="newProjectIconBar">
 
-                            <img src="img/yes.png" class="newProjectIcon setPointer" onclick=""/>
-                            <img src="img/delete.png" class="newProjectIcon setPointer" onclick=""/>
+                            <img src="img/yes.png" class="newProjectIcon setPointer" onclick="doNewUser()"/>
+                            <img src="img/delete.png" class="newProjectIcon setPointer" onclick="new function(){$('#newAccName').val('');$('#newAccPass').val('');$('#newAccRePass').val('');}"/>
 
                         </div>
                     </div>

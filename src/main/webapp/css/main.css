@@ -128,3 +128,17 @@ html
     margin-left: 20px;
     margin-right: 20px;
 }
+
+#loader
+{
+    width:100%;
+    height:500px;
+    position: fixed;
+    text-align: center;
+    background-color: #390b2a;
+    display:none;
+}
+#loaderImg
+{
+    margin-top: 300px;
+}

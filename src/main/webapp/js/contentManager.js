@@ -163,23 +163,23 @@ function moveBoxSon()
         $(".sonBoxContainer").html("");
         if(nowBoxNum==1)
         {
-            addSonBox("img/box-login.png","新建项目","newProjectDiv");
-            addSonBox("img/box-login.png","查看项目","showProjectDiv");
-            addSonBox("img/box-login.png","管理项目","manageProjectDiv");
+            addSonBox("img/addpro.png","新建项目","newProjectDiv");
+            addSonBox("img/shoPro.png","查看项目","showProjectDiv");
+            addSonBox("img/editPro.png","管理项目","manageProjectDiv");
             $(".sonBoxContainer").css("width",160*3+"px");
         }
         if(nowBoxNum==2)
         {
-            addSonBox("img/box-login.png","修改密码","accountMnage");
-            addSonBox("img/box-login.png","注销登陆","accountMnage");
-            $(".sonBoxContainer").css("width",160*2+"px");
+            //addSonBox("img/box-login.png","修改密码","accountMnage");
+            addSonBox("img/box-login.png","注销登陆","logout");
+            $(".sonBoxContainer").css("width",160+"px");
         }
         if(nowBoxNum==3 )
         {
-            addSonBox("img/box-login.png","新建账号","newAccountDiv");
-            addSonBox("img/box-login.png","账号管理","accountMnage");
-            addSonBox("img/box-login.png","权限管理","accountMnage");
-            $(".sonBoxContainer").css("width",160*3+"px");
+            addSonBox("img/newAccount.png","新建账号","newAccountDiv");
+            //addSonBox("img/accountShow.png","账号管理","accountMnage");
+            //addSonBox("img/accountEdit.png","权限管理","accountMnage");
+            $(".sonBoxContainer").css("width",160+"px");
         }
         $(".sonBoxDiv").show();
         isSonShow=true;
@@ -201,6 +201,11 @@ function addSonBox(src,name,content)
 }
 function moveTo(location)
 {
+    if(location=="logout")
+    {
+        logout();
+        return;
+    }
     if(location=="null"){alert("功能未开放");return;}
     addConntent(location);
     $("html,body").animate({scrollTop:$("#"+location).offset().top-64},500);
@@ -208,15 +213,16 @@ function moveTo(location)
 
 function addConntent(name)
 {
-    if(name=="showProjectDiv")
+
+    $("#"+name).show();
+    if(name==="showProjectDiv")
     {
         showProjectBar(userID);
     }
-    else if(name="manageProjectDiv")
+    else if(name=="manageProjectDiv")
     {
         refreshProMenageShow();
     }
-    $("#"+name).show();
 }
 
 
@@ -236,4 +242,16 @@ function shideSon(sonID)
     $("#"+sonID).slideUp(500);
     setTimeout(function(){   moveTo("topLocation");}, 500);
 }
+function doNewUser()
+{
+    var name=$('#newAccName').val();
+    var pass=$('#newAccPass').val();
+    var repass=$('#newAccRePass').val();
+    if(name=='') {alert("用户名不能为空");return;}
+    else if(pass==''){alert("密码不能为空");return;}
+    else if(pass!=repass){alert("两次密码不一致！");return;}
 
+    var res=myPost("/user/addUser",{"name":name,"password":pass},"");
+    if(res==null) alert("新建用户失败");
+    else alert("新建用户 "+name+" 成功");
+}
