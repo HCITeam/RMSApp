@@ -32,9 +32,9 @@ public class ProjectController extends BaseController{
     @ResponseBody
     public Project addProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         name=params.get("name");
-         description=params.get("description");
-         creater=Integer.parseInt(params.get("creater"));
+        String name=params.get("name");
+        String description=params.get("description");
+        int creater=Integer.parseInt(params.get("creater"));
         Project project=new Project();
         project.setName(name);
         project.setDescription(description);
@@ -54,7 +54,7 @@ public class ProjectController extends BaseController{
     @RequestMapping("/deleteProject")
     public Project deleteProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
+        int id=Integer.parseInt(params.get("id"));
         Project project=projectService.findProjectByID(id);
         projectService.deleteProject(project);
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -71,9 +71,9 @@ public class ProjectController extends BaseController{
     @RequestMapping("/updateProject")
     public Project updateProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
-         name=params.get("name");
-         description=params.get("description");
+        int id=Integer.parseInt(params.get("id"));
+        String name=params.get("name");
+        String description=params.get("description");
         Project project=projectService.findProjectByID(id);
         project.setName(name);
         project.setDescription(description);
@@ -92,7 +92,7 @@ public class ProjectController extends BaseController{
     @RequestMapping("/findProjectByCreater")
     public List<Project> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         creater=Integer.parseInt(params.get("creater"));
+        int creater=Integer.parseInt(params.get("creater"));
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectService.findProjectByCreater(creater);
        
@@ -109,13 +109,9 @@ public class ProjectController extends BaseController{
     @RequestMapping("/findProjectByID")
     public Project findProjectByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
+        int id=Integer.parseInt(params.get("id"));
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectService.findProjectByID(id);
         
     }
-    int id;
-    String name;
-    String description;
-    int creater;
 }

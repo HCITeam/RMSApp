@@ -31,8 +31,8 @@ public class UserController extends  BaseController{
     @ResponseBody
     public User addUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         name=params.get("name");
-         password=params.get("password");
+        String name=params.get("name");
+        String password=params.get("password");
         User user=new User();
         user.setName(name);
         user.setPassword(password);
@@ -52,7 +52,7 @@ public class UserController extends  BaseController{
     @RequestMapping("/deleteUser")
     public User deleteUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
+        int id=Integer.parseInt(params.get("id"));
         User user=userService.findUserByID(id);
         userService.deleteUser(user);
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -69,9 +69,9 @@ public class UserController extends  BaseController{
     @RequestMapping("/updateUser")
     public User updateUser(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
-         name=params.get("name");
-         password=params.get("password");
+        int id=Integer.parseInt(params.get("id"));
+        String name=params.get("name");
+        String password=params.get("password");
         User user=userService.findUserByID(id);
         user.setName(name);
         user.setPassword(password);
@@ -90,7 +90,7 @@ public class UserController extends  BaseController{
     @RequestMapping("/findUserByName")
     public User findUserByName(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         name=params.get("name");
+        String name=params.get("name");
         User user=userService.findUserByName(name);
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
@@ -106,12 +106,9 @@ public class UserController extends  BaseController{
     @RequestMapping("/findUserByID")
     public User findUserByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        id=Integer.parseInt(params.get("id"));
+        int id=Integer.parseInt(params.get("id"));
         User user=userService.findUserByID(id);
         response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
-     int id;
-    String name;
-    String password;
 }

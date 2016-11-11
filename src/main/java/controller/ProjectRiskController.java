@@ -32,14 +32,14 @@ public class ProjectRiskController extends BaseController{
     @ResponseBody
     public ProjectRisk addProjectRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         project_id=Integer.parseInt(params.get("projectId"));
-         name=params.get("name");
-         content=params.get("content");
-         possibility=Integer.parseInt(params.get("possibility"));
-         influenceLevel=Integer.parseInt(params.get("influenceLevel"));
-         threshold=params.get("threshold");
-         creater=Integer.parseInt(params.get("creater"));
-         tracker=Integer.parseInt(params.get("tracker"));
+        int project_id=Integer.parseInt(params.get("projectId"));
+        String name=params.get("name");
+        String content=params.get("content");
+        int possibility=Integer.parseInt(params.get("possibility"));
+        int influenceLevel=Integer.parseInt(params.get("influenceLevel"));
+        String threshold=params.get("threshold");
+        int creater=Integer.parseInt(params.get("creater"));
+        int tracker=Integer.parseInt(params.get("tracker"));
         ProjectRisk projectRisk=new ProjectRisk();
         projectRisk.setProjectId(project_id);
         projectRisk.setName(name);
@@ -64,7 +64,7 @@ public class ProjectRiskController extends BaseController{
     @RequestMapping("/deleteProjectRisk")
     public ProjectRisk deleteProjectRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
+        int id=Integer.parseInt(params.get("id"));
         ProjectRisk projectRisk=projectRiskService.findProjectRiskByID(id);
         projectRiskService.deleteProjectRisk(projectRisk);
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -81,15 +81,15 @@ public class ProjectRiskController extends BaseController{
     @RequestMapping("/updateProjectRisk")
     public ProjectRisk updateProjectRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
-         project_id=Integer.parseInt(params.get("projectId"));
-        name=params.get("name");
-         content=params.get("content");
-         possibility=Integer.parseInt(params.get("possibility"));
-         influenceLevel=Integer.parseInt(params.get("influenceLevel"));
-         threshold=params.get("threshold");
-         creater=Integer.parseInt(params.get("creater"));
-         tracker=Integer.parseInt(params.get("tracker"));
+        int id=Integer.parseInt(params.get("id"));
+        int project_id=Integer.parseInt(params.get("projectId"));
+        String name=params.get("name");
+        String content=params.get("content");
+        int possibility=Integer.parseInt(params.get("possibility"));
+        int influenceLevel=Integer.parseInt(params.get("influenceLevel"));
+        String threshold=params.get("threshold");
+        int creater=Integer.parseInt(params.get("creater"));
+        int tracker=Integer.parseInt(params.get("tracker"));
         ProjectRisk projectRisk=projectRiskService.findProjectRiskByID(id);
         projectRisk.setProjectId(project_id);
         projectRisk.setName(name);
@@ -114,7 +114,7 @@ public class ProjectRiskController extends BaseController{
     @RequestMapping("/findProjectRiskByProject")
     public List<ProjectRisk> findProjectRiskByProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         project_id=Integer.parseInt(params.get("projectId"));
+        int project_id=Integer.parseInt(params.get("projectId"));
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectRiskService.findProjectRiskByProject(project_id);
        
@@ -130,18 +130,9 @@ public class ProjectRiskController extends BaseController{
     @RequestMapping("/findProjectRiskByID")
     public ProjectRisk findProjectRiskByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
+        int id=Integer.parseInt(params.get("id"));
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectRiskService.findProjectRiskByID(id);
       
     }
-    int id;
-    int project_id;
-    String name;
-    String content;
-    int possibility;
-    int influenceLevel;
-    String threshold;
-    int creater;
-    int tracker;
 }

@@ -34,12 +34,12 @@ public class ProjectTrackController extends  BaseController {
     @ResponseBody
     public ProjectTrack addProjectTrack(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        riskId=Integer.parseInt(params.get("riskId"));
-         risk=params.get("risk");
-         state=Integer.parseInt(params.get("state"));
-         cause=params.get("cause");
-         tracker=Integer.parseInt(params.get("tracker"));
-         update_time=params.get("updateTime");
+        int riskId=Integer.parseInt(params.get("riskId"));
+        String risk=params.get("risk");
+        int state=Integer.parseInt(params.get("state"));
+        String cause=params.get("cause");
+        int tracker=Integer.parseInt(params.get("tracker"));
+        String update_time=params.get("updateTime");
         ProjectTrack projectTrack=new ProjectTrack();
         projectTrack.setRiskId(riskId);
         projectTrack.setRisk(risk);
@@ -80,12 +80,12 @@ public class ProjectTrackController extends  BaseController {
     @RequestMapping("/updateProjectTrack")
     public ProjectTrack updateProjectTrack(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
-        riskId=Integer.parseInt(params.get("riskId"));
-         risk=params.get("risk");
-         state=Integer.parseInt(params.get("state"));
-         cause=params.get("cause");
-         tracker=Integer.parseInt(params.get("tracker"));
+        int id=Integer.parseInt(params.get("id"));
+        int riskId=Integer.parseInt(params.get("riskId"));
+        String risk=params.get("risk");
+        int state=Integer.parseInt(params.get("state"));
+        String cause=params.get("cause");
+        int tracker=Integer.parseInt(params.get("tracker"));
         String update_time=params.get("updateTime");
         ProjectTrack projectTrack=projectTrackService.findProjectTrackByID(id);
         projectTrack.setRiskId(riskId);
@@ -112,7 +112,7 @@ public class ProjectTrackController extends  BaseController {
     @RequestMapping("/findProjectTrackByRisk")
     public List<ProjectTrack> findProjectTrackByRisk(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-        riskId=Integer.parseInt(params.get("riskId"));
+        int riskId=Integer.parseInt(params.get("riskId"));
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrackService.findProjectTrackByRisk(riskId);
        
@@ -128,7 +128,7 @@ public class ProjectTrackController extends  BaseController {
     @RequestMapping("/findProjectTrackByTracker")
     public List<ProjectTrack> findProjectTrackByTracker(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         tracker=Integer.parseInt(params.get("tracker"));
+        int tracker=Integer.parseInt(params.get("tracker"));
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrackService.findProjectTrackByTracker(tracker);
        
@@ -144,16 +144,9 @@ public class ProjectTrackController extends  BaseController {
     @RequestMapping("/findProjectTrackByID")
     public ProjectTrack findProjectTrackByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
-         id=Integer.parseInt(params.get("id"));
+        int id=Integer.parseInt(params.get("id"));
         response.setHeader("Access-Control-Allow-Origin", "*");
         return projectTrackService.findProjectTrackByID(id);
        
     }
-    int id;
-    int riskId;
-    String risk;
-    int state;
-    String cause;
-    int tracker;
-    String update_time;
 }
