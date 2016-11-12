@@ -165,7 +165,7 @@ function showProjectMan(proID)
     var pro=myPost("project/findProjectByID",{"id":proID},"");
     $("#proManMoreName").html(pro.name);
     $("#proMemberList").html("");
-    $("#proMemberList").append(" <tr> <th>成员列表</th></tr><tr> <td id='addMemTd' onclick='addMember("+proID+")'>+添加成员+</td></tr>");
+    $("#proMemberList").append(" <tr> <th>成员列表</th></tr><tr> <td id='addMemTd' class='roundBorder' onclick='addMember("+proID+")'>+添加成员+</td></tr>");
 
     var memList=myPost("projectUserRelationship/findProjectUserRelationshipByProject",{"projectId":proID},"");
 
@@ -258,7 +258,7 @@ function showProjectMore(proID)
 
     nowRiskID=-1;
     var memList=myPost("projectRisk/findProjectRiskByProject",{"projectId":proID},"");
-    $("#riskListTab").html("<tr> <th>风险列表</th></tr><tr> <td id='addRiskTd'onclick='addRisk()'>添加风险</td></tr>");
+    $("#riskListTab").html("<tr> <th>风险列表</th></tr><tr> <td id='addRiskTd'class='roundBorder'onclick='addRisk()'>添加风险</td></tr>");
     if(memList==null) memList=[];
     for(var i=0;i<memList.length;i++)
     {
@@ -338,7 +338,7 @@ function showRisk(id)
     $("#riskTracker").html(tracker.name);
     var trackList=myPost("/projectTrack/findProjectTrackByRisk",{"riskId":id},"");
     if(trackList==null) trackList=[];
-    if(risktracker==userID) $("#riskListTable").html("<tr> <th>名称</th><th>触发原因</th><th>触发时间</th><th class='delTrackTd'>操作</th></tr><tr id='newTrackTr'><td colspan='3' id='newTrackTd' onclick='doNewTrack("+nowRiskID+")'>+添加、编辑日志+</td></tr>");
+    if(risktracker==userID) $("#riskListTable").html("<tr> <th>名称</th><th>触发原因</th><th>触发时间</th><th class='delTrackTd'>操作</th></tr><tr id='newTrackTr'><td colspan='3' id='newTrackTd' class='roundBorder' onclick='doNewTrack("+nowRiskID+")'>+添加、编辑日志+</td></tr>");
     else $("#riskListTable").html("<tr> <th>名称</th><th>触发原因</th><th >触发时间</th><th class='delTrackTd'>操作</th></tr>");
     for(var i=0;i<trackList.length;i++)
     {
@@ -348,6 +348,10 @@ function showRisk(id)
         var cause=track.cause;
         var time=track.updateTime;
         $("#riskListTable").append("<tr id='track"+id+"tr'> <td>"+name+"</td><td>"+cause+"</td><td>"+timestampformat(time)+"</td><td class='delTrackTd' onclick='doDelTrack("+id+")'><img src='img/delete.png' class='bottomIcon setPointer'style='width:10px' /></td></tr>");
+    }
+    if(trackList.length==0)
+    {
+        $("#riskListTable").append("<tr id='track"+id+"tr'> <td colspan='4'>暂无</td></tr>");
     }
     $("#riskBtnYes").hide();
     $("#riskBtnNo").show();

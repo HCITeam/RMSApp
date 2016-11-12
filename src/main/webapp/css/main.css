@@ -142,3 +142,8 @@ html
 {
     margin-top: 300px;
 }
+
+.roundBorder
+{
+    border-radius: 30px;
+}
