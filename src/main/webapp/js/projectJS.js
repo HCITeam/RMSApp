@@ -71,7 +71,15 @@ function showProjectBar(userId)
         proNum++;
 
     }
-
+    if(proNum==0)
+    {
+        $("#projectShowBar").html("还没有参与项目");
+        canShowRoll=false;
+        $("#projectShowBar").css("font-size","30px");
+        $("#projectShowBar").css("width",600+"px");
+        $("#projectShowBar").css("margin-top",200+"px");
+        return;
+    }
     $("#projectShowBar").css("width",proNum*300+"px");
     var l=proNum*300;
     var ll=parseInt($("#projectShowBarHider").css("width"));
@@ -97,23 +105,32 @@ function refreshProMenageShow()
 function showProMenageBar(userId)
 {
     var res=myPost("/project/findProjectByCreater",{"creater":userId},"");
-    if(res==null) return;
     $("#projectManageBar").html("");
     var proID;
     var proNum=0;
-    for(var i=0;i<res.length;i++)
-    {
-        proNum++;
-        proID=res[i].id;
-        var proName=res[i].name;
-        var proShow=res[i].description;
-        $("#projectManageBar").append("  <div class='projectShowDiv projectManageDiv' onclick='showProjectMan("+proID+")'>\
-                                   <div class='projectManageName'>"+proName+"</div>\
-                                         <div class='projectShowCreater threeBorder'>"+userName+"</div>\
-                                         <div class='projectShowText threeBorder'>"+proShow+"</div>\
-                                        </div>");
-    }
+    if(res!=null)
+        for(var i=0;i<res.length;i++)
+        {
+            proNum++;
+            proID=res[i].id;
+            var proName=res[i].name;
+            var proShow=res[i].description;
+            $("#projectManageBar").append("  <div class='projectShowDiv projectManageDiv' onclick='showProjectMan("+proID+")'>\
+                                       <div class='projectManageName'>"+proName+"</div>\
+                                             <div class='projectShowCreater threeBorder'>"+userName+"</div>\
+                                             <div class='projectShowText threeBorder'>"+proShow+"</div>\
+                                            </div>");
+        }
 
+    if(proNum==0)
+    {
+        $("#projectManageBar").html("还没有参与项目");
+        canManRoll=false;
+        $("#projectManageBar").css("font-size","30px");
+        $("#projectManageBar").css("width",600+"px");
+        $("#projectManageBar").css("margin-top",200+"px");
+        return;
+    }
     $("#projectManageBar").css("width",proNum*300+"px");
     var l=proNum*300;
     var ll=parseInt($("#proManaBarHider").css("width"));
@@ -330,7 +347,7 @@ function showRisk(id)
         var name=track.risk;
         var cause=track.cause;
         var time=track.updateTime;
-        $("#riskListTable").append("<tr id='track"+id+"tr'> <td>"+name+"</td><td>"+cause+"</td><td>"+time+"</td><td class='delTrackTd' onclick='doDelTrack("+id+")'><img src='img/delete.png' class='bottomIcon setPointer'style='width:10px' /></td></tr>");
+        $("#riskListTable").append("<tr id='track"+id+"tr'> <td>"+name+"</td><td>"+cause+"</td><td>"+timestampformat(time)+"</td><td class='delTrackTd' onclick='doDelTrack("+id+")'><img src='img/delete.png' class='bottomIcon setPointer'style='width:10px' /></td></tr>");
     }
     $("#riskBtnYes").hide();
     $("#riskBtnNo").show();
@@ -363,8 +380,19 @@ function addRisk()
     $("#riskShow").val("");
     $("#riskCreater").html(userName);
     $("#riskTracker").html("<input id='newRiskTrackerName' class='contantInputer newMemberInputer' style='width:70px;font-size: 15px' type='text' placeholder='输入姓名'/>");
-    $("#riskPoss").html("<input id='newRiskPoss' class='contantInputer newMemberInputer newRiskInputer' type='text' placeholder='?'/>");
-    $("#riskInfluence").html("<input id='newRiskInflu' class='contantInputer newMemberInputer newRiskInputer' type='text' placeholder='?'/>");
+    //$("#riskPoss").html("<input id='newRiskPoss' class='contantInputer newMemberInputer newRiskInputer' type='text' placeholder='?'/>");
+    $("#riskPoss").html("<select name='newRiskPoss' id='newRiskPoss' class='contantInputer newMemberInputer newRiskInputer'>\
+    <option value='高'>高</option>\
+    <option value='中'>中</option>\
+    <option value='低'>低</option>\
+    </select>");
+
+   // $("#riskInfluence").html("<input id='newRiskInflu' class='contantInputer newMemberInputer newRiskInputer' type='text' placeholder='?'/>");
+    $("#riskInfluence").html("<select name='newRiskInflu' id='newRiskInflu' class='contantInputer newMemberInputer newRiskInputer'>\
+    <option value='高'>高</option>\
+    <option value='中'>中</option>\
+    <option value='低'>低</option>\
+    </select>");
     $("#riskThreshold").html("<input id='newRiskThre' class='contantInputer newMemberInputer ' type='text' style='width:120px;font-size: 15px' placeholder='请输入触发原因'/>");
     $("#riskListTable").html(" <tr> <th colspan='2'>风险日志</th></tr><tr><td colspan='2'>暂无</td></tr>");
     $("#riskBtnYes").show();
@@ -389,8 +417,23 @@ function editRisk()
     $("#riskShow").val(show);
     $("#riskCreater").html(userName);
     $("#riskTracker").html("<input id='newRiskTrackerName' class='contantInputer newMemberInputer' style='width:70px;font-size: 15px' type='text' placeholder='输入姓名'value='"+tracker+"'/>");
-    $("#riskPoss").html("<input id='newRiskPoss' class='contantInputer newMemberInputer newRiskInputer' type='text' placeholder='?'value='"+poss+"'/>");
-    $("#riskInfluence").html("<input id='newRiskInflu' class='contantInputer newMemberInputer newRiskInputer' type='text' placeholder='?'value='"+influence+"'/>");
+    //$("#riskPoss").html("<input id='newRiskPoss' class='contantInputer newMemberInputer newRiskInputer' type='text' placeholder='?'value='"+poss+"'/>");
+    //$("#riskInfluence").html("<input id='newRiskInflu' class='contantInputer newMemberInputer newRiskInputer' type='text' placeholder='?'value='"+influence+"'/>");
+
+    $("#riskPoss").html("<select name='newRiskPoss' id='newRiskPoss' class='contantInputer newMemberInputer newRiskInputer'value='"+poss+"'>\
+    <option value='高'>高</option>\
+    <option value='中'>中</option>\
+    <option value='低'>低</option>\
+    </select>");
+    $("#newRiskPoss option[value='"+poss+"']").attr("selected", "selected");
+
+    $("#riskInfluence").html("<select name='newRiskInflu' id='newRiskInflu' class='contantInputer newMemberInputer newRiskInputer' value='"+influence+"'>\
+    <option value='高'>高</option>\
+    <option value='中'>中</option>\
+    <option value='低'>低</option>\
+    </select>");
+    $("#newRiskInflu option[value='"+influence+"']").attr("selected", "selected");
+
     $("#riskThreshold").html("<input id='newRiskThre' class='contantInputer newMemberInputer ' type='text' style='width:120px;font-size: 15px' placeholder='请输入触发原因'value='"+shold+"'/>");
     $("#riskListTable").html(" <tr> <th colspan='2'>风险日志</th></tr><tr><td colspan='2'>暂不显示</td></tr>");
     $("#riskBtnYes").show();

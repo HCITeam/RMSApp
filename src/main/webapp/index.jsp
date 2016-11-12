@@ -96,7 +96,7 @@
             <div class="mainDivSon" id="newProjectDiv">
                 <div class="divSonTitle">
                     <div class="divSonTitleImg">
-                        <img src="img/box-login.png" class="sonTitleImg setPointer" onclick=""/>
+                        <img src="img/addpro.png" class="sonTitleImg setPointer" onclick=""/>
                     </div>
                     <div class="divSonIconBar">
                         <img src="img/small.png" class="sonTitleIcon setPointer" onclick="shideSon('newProjectDiv')"/>
@@ -127,7 +127,7 @@
             <div class="mainDivSon" id="showProjectDiv">
                 <div class="divSonTitle">
                     <div class="divSonTitleImg">
-                        <img src="img/box-login.png" class="sonTitleImg setPointer" onclick=""/>
+                        <img src="img/shoPro.png" class="sonTitleImg setPointer" onclick=""/>
                     </div>
 
                     <div class="divSonIconBar">
@@ -272,7 +272,7 @@
             <div class="mainDivSon" id="manageProjectDiv">
                 <div class="divSonTitle">
                     <div class="divSonTitleImg">
-                        <img src="img/box-login.png" class="sonTitleImg setPointer" onclick=""/>
+                        <img src="img/editPro.png" class="sonTitleImg setPointer" onclick=""/>
                     </div>
 
                     <div class="divSonIconBar">
@@ -408,12 +408,49 @@
 
                 <div style="width:100%;height:100px"></div>
                 </div>
-            <!-- 新建账号-->
+
+            <!-- 修改密码-->
+            <div class="mainDiv">
+                <div class="mainDivSon" id="editPasswordDiv">
+                    <div class="divSonTitle">
+                        <div class="divSonTitleImg">
+                            <img src="img/accountEdit.png" class="sonTitleImg setPointer" onclick=""/>
+                        </div>
+                        <div class="divSonIconBar">
+                            <img src="img/small.png" class="sonTitleIcon setPointer" onclick="shideSon('newAccountDiv')"/>
+
+                            <img src="img/refresh.png" class="sonTitleIcon setPointer" onclick=""/>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 100px;">
+                        <div class="contanter bottomLine newProjectInputer" style="width:300px">
+                            <input id="oldPass" class="contantInputer newProName" type="password" placeholder="在这里输入旧的密码"/>
+                        </div>
+
+                        <div class="contanter bottomLine newProjectInputer" style="width:300px">
+                            <input id="newPass" class="contantInputer newProName" type="password" placeholder="在这里输入新的用户密码"/>
+                        </div>
+
+                        <div class="contanter bottomLine newProjectInputer" style="width:300px">
+                            <input id="newRePass" class="contantInputer newProName" type="password" placeholder="在这里确认用户密码"/>
+                        </div>
+
+                        <div class="newProjectIconBar">
+
+                            <img src="img/yes.png" class="newProjectIcon setPointer" onclick="doEditPass()"/>
+                            <img src="img/delete.png" class="newProjectIcon setPointer" onclick="new function(){$('#oldPass').val('');$('#newPass').val('');$('#newRePass').val('');}"/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <!-- 新建账号-->
             <div class="mainDiv">
                 <div class="mainDivSon" id="newAccountDiv">
                     <div class="divSonTitle">
                         <div class="divSonTitleImg">
-                            <img src="img/box-login.png" class="sonTitleImg setPointer" onclick=""/>
+                            <img src="img/newAccount.png" class="sonTitleImg setPointer" onclick=""/>
                         </div>
                         <div class="divSonIconBar">
                             <img src="img/small.png" class="sonTitleIcon setPointer" onclick="shideSon('newAccountDiv')"/>
@@ -444,6 +481,7 @@
                     </div>
 
                 </div>
+            </div>
                 <!--账号管理-->
                 <div class="mainDivSon" id="accountMnage">
                     <div class="divSonTitle">

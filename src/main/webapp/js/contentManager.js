@@ -59,6 +59,8 @@ function login()
     {
         userName=res.name;
         userID=res.id;
+        userStatus=res.status;
+        userPass=res.password;
         loginOK();
     }
     else
@@ -170,9 +172,9 @@ function moveBoxSon()
         }
         if(nowBoxNum==2)
         {
-            //addSonBox("img/box-login.png","修改密码","accountMnage");
+            addSonBox("img/accountEdit.png","修改密码","editPasswordDiv");
             addSonBox("img/box-login.png","注销登陆","logout");
-            $(".sonBoxContainer").css("width",160+"px");
+            $(".sonBoxContainer").css("width",160*2+"px");
         }
         if(nowBoxNum==3 )
         {
@@ -204,6 +206,11 @@ function moveTo(location)
     if(location=="logout")
     {
         logout();
+        return;
+    }
+    if(location=="newAccountDiv"&&userStatus!=0)
+    {
+        alert("没有相关权限，请联系管理员！");
         return;
     }
     if(location=="null"){alert("功能未开放");return;}
@@ -251,7 +258,21 @@ function doNewUser()
     else if(pass==''){alert("密码不能为空");return;}
     else if(pass!=repass){alert("两次密码不一致！");return;}
 
-    var res=myPost("/user/addUser",{"name":name,"password":pass},"");
+    var res=myPost("user/addUser",{"name":name,"password":pass},"");
     if(res==null) alert("新建用户失败");
     else alert("新建用户 "+name+" 成功");
+}
+
+function doEditPass()
+{
+    var oldpass=$('#oldPass').val();
+    var pass=$('#newPass').val();
+    var repass=$('#newRePass').val();
+    if(oldpass!=userPass){alert("旧密码错误");return;}
+    else if(pass==''){alert("密码不能为空");return;}
+    else if(pass!=repass){alert("两次密码不一致！");return;}
+
+    var res=myPost("user/updateUser",{"id":userID,"name":userName,"password":pass},"");
+    if(res==null) alert("修改密码失败");
+    else alert("修改密码成功");
 }
