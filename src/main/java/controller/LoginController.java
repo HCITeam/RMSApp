@@ -34,7 +34,7 @@ public class LoginController extends  BaseController{
         String name=params.get("name");
         String password=params.get("password");
         User user=userService.login(name,password);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
 
@@ -51,7 +51,7 @@ public class LoginController extends  BaseController{
         String name=params.get("name");
         String password=params.get("password");
         User user=userService.register(name,password);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
 }

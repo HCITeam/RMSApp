@@ -38,7 +38,7 @@ public class UserController extends  BaseController{
         user.setPassword(password);
         user.setStatus(1);
         user=userService.addUser(user);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return user ;
     }
 
@@ -55,7 +55,7 @@ public class UserController extends  BaseController{
         int id=Integer.parseInt(params.get("id"));
         User user=userService.findUserByID(id);
         userService.deleteUser(user);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
 
@@ -76,7 +76,7 @@ public class UserController extends  BaseController{
         user.setName(name);
         user.setPassword(password);
         userService.updateUser(user);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
 
@@ -92,7 +92,7 @@ public class UserController extends  BaseController{
         Map<String, String> params=getParams(request);
         String name=params.get("name");
         User user=userService.findUserByName(name);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
 
@@ -108,7 +108,7 @@ public class UserController extends  BaseController{
         Map<String, String> params=getParams(request);
         int id=Integer.parseInt(params.get("id"));
         User user=userService.findUserByID(id);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  user;
     }
 }

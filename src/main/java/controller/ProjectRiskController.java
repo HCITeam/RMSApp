@@ -50,7 +50,7 @@ public class ProjectRiskController extends BaseController{
         projectRisk.setCreater(creater);
         projectRisk.setTracker(tracker);
         projectRisk=projectRiskService.addProjectRisk(projectRisk);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectRisk;
     }
 
@@ -67,7 +67,7 @@ public class ProjectRiskController extends BaseController{
         int id=Integer.parseInt(params.get("id"));
         ProjectRisk projectRisk=projectRiskService.findProjectRiskByID(id);
         projectRiskService.deleteProjectRisk(projectRisk);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  projectRisk;
     }
 
@@ -100,7 +100,7 @@ public class ProjectRiskController extends BaseController{
         projectRisk.setCreater(creater);
         projectRisk.setTracker(tracker);
         projectRiskService.updateProjectRisk(projectRisk);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  projectRisk;
     }
 
@@ -115,7 +115,7 @@ public class ProjectRiskController extends BaseController{
     public List<ProjectRisk> findProjectRiskByProject(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
         int project_id=Integer.parseInt(params.get("projectId"));
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectRiskService.findProjectRiskByProject(project_id);
        
     }
@@ -131,7 +131,7 @@ public class ProjectRiskController extends BaseController{
     public ProjectRisk findProjectRiskByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
         int id=Integer.parseInt(params.get("id"));
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectRiskService.findProjectRiskByID(id);
       
     }
