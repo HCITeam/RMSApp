@@ -40,7 +40,6 @@ public class ProjectController extends BaseController{
         project.setDescription(description);
         project.setCreater(creater);
         project=projectService.addProject(project);
-//        response.setHeader("Access-Control-Allow-Origin", "*");
         return project;
     }
 
@@ -57,7 +56,6 @@ public class ProjectController extends BaseController{
         int id=Integer.parseInt(params.get("id"));
         Project project=projectService.findProjectByID(id);
         projectService.deleteProject(project);
-//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  project;
     }
 
@@ -78,7 +76,6 @@ public class ProjectController extends BaseController{
         project.setName(name);
         project.setDescription(description);
         projectService.updateProject(project);
-//        response.setHeader("Access-Control-Allow-Origin", "*");
         return  project;
     }
 
@@ -93,7 +90,6 @@ public class ProjectController extends BaseController{
     public List<Project> findProjectByCreater(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
         int creater=Integer.parseInt(params.get("creater"));
-//        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectService.findProjectByCreater(creater);
        
     }
@@ -110,7 +106,6 @@ public class ProjectController extends BaseController{
     public Project findProjectByID(HttpServletRequest request, HttpServletResponse response){
         Map<String, String> params=getParams(request);
         int id=Integer.parseInt(params.get("id"));
-//        response.setHeader("Access-Control-Allow-Origin", "*");
         return projectService.findProjectByID(id);
         
     }

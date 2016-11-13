@@ -2,7 +2,7 @@ function myPost(sendUrl,sendData,waiter)
 {
     var res=null;
     $.ajax({
-        url: "/"+sendUrl,    //请求的url地址
+        url: "/RMSApp/"+sendUrl,    //请求的url地址
         //url: "http://localhost:8080/"+sendUrl,    //请求的url地址
         dataType: "json",   //返回格式为json
         async: false, //请求是否异步，默认为异步，这也是ajax重要特性
