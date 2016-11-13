@@ -336,7 +336,7 @@ function showRisk(id)
     $("#riskThreshold").html(riskthreshold);
     $("#riskCreater").html(creater.name);
     $("#riskTracker").html(tracker.name);
-    var trackList=myPost("/projectTrack/findProjectTrackByRisk",{"riskId":id},"");
+    var trackList=myPost("projectTrack/findProjectTrackByRisk",{"riskId":id},"");
     if(trackList==null) trackList=[];
     if(risktracker==userID) $("#riskListTable").html("<tr> <th>名称</th><th>触发原因</th><th>触发时间</th><th class='delTrackTd'>操作</th></tr><tr id='newTrackTr'><td colspan='3' id='newTrackTd' class='roundBorder' onclick='doNewTrack("+nowRiskID+")'>+添加、编辑日志+</td></tr>");
     else $("#riskListTable").html("<tr> <th>名称</th><th>触发原因</th><th >触发时间</th><th class='delTrackTd'>操作</th></tr>");
@@ -363,7 +363,7 @@ function doDelTrack(id)
 {
     if(confirm("确定删除吗?"))
     {
-        var res=myPost("/projectTrack/deleteProjectTrack",{"id":id},"");
+        var res=myPost("projectTrack/deleteProjectTrack",{"id":id},"");
         if(res==null)
         {
             alert("删除失败");
@@ -517,7 +517,7 @@ function doNewRisk()
     if(nowRiskID==-2)
     {
         //nowEditId
-        var res=myPost("/projectRisk/updateProjectRisk",{"id":nowEditId,"projectId":nowProId,"name":$("#newRiskName").val(),"content":$("#riskShow").val(),"possibility":newRiskPoss,"influenceLevel":newRiskInflu,"threshold":$("#newRiskThre").val(),"creater":userID,"tracker":member.id},"");
+        var res=myPost("projectRisk/updateProjectRisk",{"id":nowEditId,"projectId":nowProId,"name":$("#newRiskName").val(),"content":$("#riskShow").val(),"possibility":newRiskPoss,"influenceLevel":newRiskInflu,"threshold":$("#newRiskThre").val(),"creater":userID,"tracker":member.id},"");
         if(res==null)
         {
             alert("修改失败");
@@ -529,7 +529,7 @@ function doNewRisk()
         return;
     }
 
-    var res=myPost("/projectRisk/addProjectRisk",{"projectId":nowProId,"name":$("#newRiskName").val(),"content":$("#riskShow").val(),"possibility":newRiskPoss,"influenceLevel":newRiskInflu,"threshold":$("#newRiskThre").val(),"creater":userID,"tracker":member.id},"");
+    var res=myPost("projectRisk/addProjectRisk",{"projectId":nowProId,"name":$("#newRiskName").val(),"content":$("#riskShow").val(),"possibility":newRiskPoss,"influenceLevel":newRiskInflu,"threshold":$("#newRiskThre").val(),"creater":userID,"tracker":member.id},"");
     if(res==null)
     {
         alert("新建失败");
@@ -553,7 +553,7 @@ function delNewRisk()
             {
                 if(confirm("确定删除这个风险吗"))
                 {
-                    var res=myPost("/projectRisk/deleteProjectRisk",{"id":nowRiskID},"");
+                    var res=myPost("projectRisk/deleteProjectRisk",{"id":nowRiskID},"");
                     if(res==null)
                     {
                         alert("删除失败");
